@@ -13,7 +13,11 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 48, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(78, 205, 196, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #0c0c1e 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #001122 100%);
             color: #fff;
             min-height: 100vh;
             overflow-x: hidden;
@@ -33,26 +37,51 @@
 
         .floating-letter {
             position: absolute;
-            font-size: 2rem;
-            font-weight: bold;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite;
+            font-size: 2.5rem;
+            font-weight: 300;
+            opacity: 0.25;
+            animation: float 8s ease-in-out infinite;
             color: #4ecdc4;
+            text-shadow: 0 0 20px rgba(78, 205, 196, 0.4);
+            font-family: Georgia, serif;
         }
 
         .floating-letter:nth-child(odd) {
-            color: #ff6b6b;
+            color: #ff7675;
+            text-shadow: 0 0 20px rgba(255, 118, 117, 0.4);
             animation-delay: -2s;
+            font-size: 3rem;
         }
 
         .floating-letter:nth-child(3n) {
-            color: #ffe66d;
+            color: #fdcb6e;
+            text-shadow: 0 0 20px rgba(253, 203, 110, 0.4);
             animation-delay: -4s;
+            font-size: 2.8rem;
+        }
+
+        .floating-letter:nth-child(4n) {
+            color: #a29bfe;
+            text-shadow: 0 0 20px rgba(162, 155, 254, 0.4);
+            animation-delay: -6s;
+            font-size: 2.3rem;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1); 
+                opacity: 0.15;
+            }
+            25% { 
+                opacity: 0.35;
+            }
+            50% { 
+                transform: translateY(-30px) rotate(3deg) scale(1.1); 
+                opacity: 0.25;
+            }
+            75% { 
+                opacity: 0.2;
+            }
         }
 
         /* Sombrero mágico */
@@ -110,18 +139,22 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Header */
         .header {
             padding: 2rem 0;
             text-align: center;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(5px);
             border-radius: 20px;
             margin: 2rem 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .logo {
@@ -173,29 +206,34 @@
         .navigation {
             display: flex;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
             gap: 2rem;
-            margin: 3rem 0;
+            width: 100%;
+            max-width: 900px;
         }
 
         .nav-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px);
-            border-radius: 15px;
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.025);
+            backdrop-filter: blur(3px);
+            border-radius: 8px;
+            padding: 1.5rem;
             text-align: center;
-            min-width: 250px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.4s ease;
+            width: 280px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.2s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
         }
 
         .nav-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.035);
+            border-color: rgba(255, 255, 255, 0.06);
         }
 
         .nav-card::before {
@@ -205,8 +243,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.02), transparent);
+            transition: left 0.4s ease;
         }
 
         .nav-card:hover::before {
@@ -214,51 +252,54 @@
         }
 
         .nav-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
             display: block;
+            opacity: 0.7;
         }
 
         .nav-card.platform .nav-icon {
             color: #4ecdc4;
+            filter: drop-shadow(0 0 4px rgba(78, 205, 196, 0.15));
         }
 
         .nav-card.actas .nav-icon {
-            color: #ff6b6b;
+            color: #ff7675;
+            filter: drop-shadow(0 0 4px rgba(255, 118, 117, 0.15));
         }
 
         .nav-card.informes .nav-icon {
-            color: #ffe66d;
+            color: #fdcb6e;
+            filter: drop-shadow(0 0 4px rgba(253, 203, 110, 0.15));
         }
 
         .nav-title {
-            font-size: 1.3rem;
-            font-weight: bold;
+            font-size: 1.1rem;
+            font-weight: 500;
             margin-bottom: 0.5rem;
-            color: #fff;
+            color: #e0e0e0;
         }
 
         .nav-description {
-            color: #a8a8a8;
-            font-size: 0.9rem;
-            line-height: 1.4;
+            color: #999;
+            font-size: 0.8rem;
+            line-height: 1.3;
         }
 
         /* Footer */
         .footer {
-            margin-top: auto;
-            padding: 2rem 0;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             text-align: center;
-            color: #666;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #555;
+            font-size: 0.8rem;
+            z-index: 4;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .logo {
-                font-size: 2.5rem;
-            }
-
             .navigation {
                 flex-direction: column;
                 align-items: center;
@@ -266,56 +307,59 @@
             }
 
             .nav-card {
-                min-width: auto;
-                width: 100%;
-                max-width: 300px;
+                width: 90%;
+                max-width: 320px;
+                height: 180px;
             }
 
             .magic-hat {
-                bottom: 20px;
+                bottom: 80px;
                 right: 20px;
-                width: 80px;
-                height: 80px;
+                width: 70px;
+                height: 70px;
             }
 
             .container {
                 padding: 0 15px;
             }
 
-            .header {
-                margin: 1rem 0;
-                padding: 1.5rem;
+            .floating-letter {
+                font-size: 1.8rem;
             }
 
-            .floating-letter {
-                font-size: 1.5rem;
+            .floating-letter:nth-child(odd) {
+                font-size: 2.2rem;
+            }
+
+            .floating-letter:nth-child(3n) {
+                font-size: 2rem;
+            }
+
+            .floating-letter:nth-child(4n) {
+                font-size: 1.7rem;
             }
         }
 
         @media (max-width: 480px) {
-            .logo {
-                font-size: 2rem;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-            }
-
-            .language-flags {
-                gap: 15px;
-            }
-
-            .flag {
-                width: 30px;
-                height: 22px;
+            .nav-card {
+                height: 160px;
             }
 
             .nav-icon {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .nav-title {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+
+            .nav-description {
+                font-size: 0.75rem;
+            }
+
+            .magic-hat {
+                width: 60px;
+                height: 60px;
             }
         }
     </style>
@@ -323,18 +367,22 @@
 <body>
     <!-- Elementos de fondo flotantes -->
     <div class="background-elements">
-        <span class="floating-letter" style="top: 10%; left: 10%;">A</span>
-        <span class="floating-letter" style="top: 20%; left: 80%;">B</span>
-        <span class="floating-letter" style="top: 30%; left: 15%;">C</span>
-        <span class="floating-letter" style="top: 40%; left: 85%;">D</span>
-        <span class="floating-letter" style="top: 50%; left: 5%;">E</span>
-        <span class="floating-letter" style="top: 60%; left: 90%;">F</span>
-        <span class="floating-letter" style="top: 70%; left: 20%;">G</span>
-        <span class="floating-letter" style="top: 80%; left: 75%;">H</span>
-        <span class="floating-letter" style="top: 15%; left: 50%;">Ñ</span>
-        <span class="floating-letter" style="top: 35%; left: 60%;">@</span>
-        <span class="floating-letter" style="top: 55%; left: 30%;">!</span>
-        <span class="floating-letter" style="top: 75%; left: 45%;">?</span>
+        <span class="floating-letter" style="top: 10%; left: 8%;">Aa</span>
+        <span class="floating-letter" style="top: 15%; left: 85%;">Bb</span>
+        <span class="floating-letter" style="top: 25%; left: 12%;">Cc</span>
+        <span class="floating-letter" style="top: 35%; left: 88%;">Dd</span>
+        <span class="floating-letter" style="top: 45%; left: 5%;">Ee</span>
+        <span class="floating-letter" style="top: 55%; left: 92%;">Ff</span>
+        <span class="floating-letter" style="top: 65%; left: 15%;">Gg</span>
+        <span class="floating-letter" style="top: 75%; left: 80%;">Hh</span>
+        <span class="floating-letter" style="top: 20%; left: 45%;">Ñ</span>
+        <span class="floating-letter" style="top: 40%; left: 55%;">Ll</span>
+        <span class="floating-letter" style="top: 60%; left: 35%;">Rr</span>
+        <span class="floating-letter" style="top: 80%; left: 50%;">Ss</span>
+        <span class="floating-letter" style="top: 30%; left: 70%;">♪</span>
+        <span class="floating-letter" style="top: 50%; left: 25%;">✦</span>
+        <span class="floating-letter" style="top: 70%; left: 65%;">◆</span>
+        <span class="floating-letter" style="top: 85%; left: 30%;">§</span>
     </div>
 
     <!-- Sombrero mágico -->
@@ -353,15 +401,7 @@
     </div>
 
     <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <h1 class="logo">El Profe 365</h1>
-            <p class="subtitle">Docente de Castellano e Inglés</p>
-            <div class="language-flags">
-                <div class="flag spain"></div>
-                <div class="flag uk"></div>
-            </div>
-        </header>
+
 
         <!-- Navegación principal -->
         <nav class="navigation">
@@ -440,14 +480,14 @@
             setTimeout(createMagicEffect, 1000);
         });
 
-        // Efecto hover en las tarjetas
+        // Efecto hover en las tarjetas - muy sutil
         document.querySelectorAll('.nav-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.transform = 'scale(1.02)';
             });
             
             card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
+                this.style.transform = 'scale(1)';
             });
         });
 
