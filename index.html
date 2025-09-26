@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🦉 Mgtr. Jesús Álvarez Sáez | El Sabio Bilingüe</title>
+    <title>🦉 Mgtr. Jesús Álvarez Sáez | El Profe 365</title>
     <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
@@ -13,7 +13,7 @@
             --color-fondo: #1A1A2E; 
             --color-superficie: #2C2C54; 
             --color-brillo: #FDD835; /* Dorado/Amarillo (Ojos del Búho/Brillo) */
-            --color-acento: #00BCD4; /* Turquesa (Burbujas de Texto) */
+            --color-acento: #00BCD4; /* Turquesa (Burbujas de Texto/Lema) */
             --color-texto-claro: #E0F7FA; 
             
             /* Colores de Hover */
@@ -77,49 +77,49 @@
         }
         
         .knowledge-owl {
-            font-size: 10em; /* Búho grande */
+            font-size: 10em; 
             position: relative;
-            color: var(--color-superficie);
+            color: var(--color-superficie); /* Color principal del sombrero/búho */
             filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
-            /* Animación principal de "habla" y movimiento sutil */
             animation: owlTalk 2s infinite alternate ease-in-out;
         }
 
-        /* Simulación de boca o pico moviéndose al "hablar" */
         @keyframes owlTalk {
-            0% { transform: scaleY(1) translateY(0); }
-            50% { transform: scaleY(0.98) translateY(5px); }
-            100% { transform: scaleY(1) translateY(0); }
+            0% { transform: scaleY(1) translateY(0) rotate(-2deg); }
+            50% { transform: scaleY(0.98) translateY(5px) rotate(2deg); }
+            100% { transform: scaleY(1) translateY(0) rotate(-2deg); }
         }
 
-        /* Ojos brillantes */
         .knowledge-owl i {
-            color: var(--color-brillo);
+            color: var(--color-brillo); /* Color de los detalles del búho/sombrero */
             text-shadow: 0 0 10px var(--color-brillo);
         }
 
-        /* --- Expresiones Educativas (Burbujas de Texto) --- */
-        .speech-bubble {
+        /* --- Expresiones Educativas (Burbujas/Letras Fugaces desde el Sombrero) --- */
+        .thought-bubble {
             position: absolute;
-            top: -20px;
-            left: 100%; /* Sale del búho */
-            padding: 8px 12px;
-            border-radius: 20px;
+            top: -0.5em; /* Ajustado para que salga de la parte superior del sombrero */
+            left: 50%;
+            transform: translateX(-50%); /* Centra la burbuja sobre el sombrero */
+            padding: 5px 10px;
+            border-radius: 15px;
             background-color: var(--color-acento);
             color: var(--color-fondo);
-            font-size: 1.2em;
+            font-size: 1em; /* Más pequeña */
             font-weight: bold;
             opacity: 0;
             white-space: nowrap;
-            animation: floatAway 6s infinite ease-out;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            animation: shootFromHat 8s infinite ease-out; /* Animación de salida */
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.2); /* Semi-brillante */
         }
 
-        @keyframes floatAway {
-            0% { opacity: 0; transform: translate(0, 0); }
-            5% { opacity: 1; }
-            90% { opacity: 0.8; }
-            100% { opacity: 0; transform: translate(300px, -50px) scale(0.8); }
+        @keyframes shootFromHat {
+            0% { opacity: 0; transform: translate(-50%, 0) scale(0.5); }
+            5% { opacity: 0.6; transform: translate(-50%, -10px) scale(0.8); } /* Semitransparente */
+            15% { opacity: 0.8; transform: translate(50px, -50px) scale(1); } /* Sale del sombrero y sube/deriva */
+            70% { opacity: 0.6; }
+            100% { opacity: 0; transform: translate(250px, -150px) scale(0.7); } /* Se aleja y desvanece */
         }
         
         /* Contenido Principal (Texto y Enlaces) - Mismo formato */
@@ -140,8 +140,22 @@
 
         .subtitle {
             font-size: 1.6em;
-            margin-bottom: 50px;
+            margin-bottom: 20px; /* Menos espacio para añadir el lema */
             color: var(--color-acento);
+        }
+
+        .lema {
+            font-size: 2em; /* Tamaño del lema */
+            font-weight: bold;
+            color: var(--color-acento);
+            text-shadow: 2px 2px var(--color-superficie);
+            margin-bottom: 50px;
+            animation: pulseLema 2s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulseLema {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: scale(1.05); opacity: 1; }
         }
         
         .link-container {
@@ -201,10 +215,10 @@
         <div class="knowledge-owl">
              <i class="fas fa-hat-wizard"></i>
             
-            <span class="speech-bubble" style="animation-delay: 0s;">¡Aprender es divertido!</span>
-            <span class="speech-bubble" style="animation-delay: 2s;">Hello, friend! 👋</span>
-            <span class="speech-bubble" style="animation-delay: 4s;">¡El conocimiento vuela! 🚀</span>
-            <span class="speech-bubble" style="animation-delay: 6s;">¡Read, read, read! 📚</span>
+            <span class="thought-bubble" style="animation-delay: 0s;">¡Hola, amigo!</span>
+            <span class="thought-bubble" style="animation-delay: 2s;">Learn & Grow!</span>
+            <span class="thought-bubble" style="animation-delay: 4s;">¡Leer es volar!</span>
+            <span class="thought-bubble" style="animation-delay: 6s;">Knowledge is magic!</span>
         </div>
     </div>
 
@@ -212,6 +226,7 @@
         <h1>¡HELLO! 👋 ¡HOLA!</h1>
         <h1>Mgtr. Jesús Álvarez Sáez</h1>
         <p class="subtitle">Tu Guía de Aventuras Bilingües en Primaria.</p>
+        <p class="lema">¡El Profe 365!</p>
 
         <div class="link-container">
             <a href="#" class="link-item">
@@ -258,7 +273,6 @@
         let currentColorIndex = 0;
 
         hoverArea.addEventListener('mousemove', () => {
-            // Baja probabilidad de cambio (2%) para un efecto sutil
             if (Math.random() < 0.02) { 
                 currentColorIndex = (currentColorIndex + 1) % colors.length;
                 body.style.backgroundColor = colors[currentColorIndex];
