@@ -3,90 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌟 Rincón Mágico del Docente 🌟</title>
+    <title>📚 Mgtr. Jesús Álvarez Sáez | Guía Bilingüe</title>
     <style>
         :root {
-            --color-oscuro-principal: #1A1A2E; /* Azul muy oscuro */
-            --color-oscuro-secundario: #16213E; /* Azul oscuro */
-            --color-acento-claro: #E0FFFF; /* Turquesa muy claro */
-            --color-acento-vibrante: #FFD700; /* Oro */
-            --color-texto-claro: #F0F8FF; /* Blanco azulado */
-
-            --color-hover-1: #FF6B6B; /* Rojo coral */
-            --color-hover-2: #4ECDC4; /* Verde menta */
-            --color-hover-3: #C70039; /* Rojo oscuro */
+            /* Paleta Oscura */
+            --color-fondo: #1C1C3A; /* Azul medianoche muy oscuro */
+            --color-superficie: #2A2A4C; /* Azul oscuro para elementos */
+            --color-brillo: #FFD700; /* Dorado para la brújula */
+            --color-acento-claro: #A0C4FF; /* Azul claro suave */
+            --color-texto-claro: #F0F8FF;
+            
+            /* Colores de Hover/Dinamismo */
+            --color-hover-1: #FF5733; /* Naranja vibrante */
+            --color-hover-2: #33A8FF; /* Azul eléctrico */
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif; /* Fuente moderna y limpia */
-            background-color: var(--color-oscuro-principal);
+            font-family: 'Verdana', sans-serif;
+            background-color: var(--color-fondo);
             color: var(--color-texto-claro);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden; /* Para las animaciones de fondo */
+            overflow: hidden;
             position: relative;
-            transition: background-color 0.8s ease-in-out; /* Transición suave al cambiar de color */
+            transition: background-color 0.8s ease-in-out; 
         }
 
-        /* Fondo animado con estrellas/partículas */
-        .background-animation {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none; /* Para no interferir con el mouse */
-            background: radial-gradient(circle, rgba(26,26,46,0) 0%, var(--color-oscuro-principal) 100%);
-            z-index: -1;
-        }
-
-        .star {
-            position: absolute;
-            background-color: var(--color-acento-claro);
-            border-radius: 50%;
-            opacity: 0;
-            animation: twinkle 5s infinite ease-in-out forwards;
-        }
-
-        @keyframes twinkle {
-            0% { transform: scale(0); opacity: 0; }
-            20% { transform: scale(1); opacity: 1; }
-            80% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0); opacity: 0; }
-        }
-
-        /* Contenido principal */
+        /* Contenido Principal */
         .content {
             text-align: center;
-            z-index: 1; /* Asegura que el contenido esté por encima de las animaciones */
-            padding: 20px;
-            max-width: 80%;
+            z-index: 10; /* Alto z-index para estar sobre las animaciones */
+            padding: 30px;
         }
 
         h1 {
-            font-size: 4em;
-            margin-bottom: 15px;
-            text-shadow: 0 0 15px var(--color-acento-vibrante);
-            letter-spacing: 3px;
+            font-size: 3em;
+            margin-bottom: 5px;
+            color: var(--color-brillo);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
         .subtitle {
-            font-size: 1.5em;
+            font-size: 1.2em;
             margin-bottom: 40px;
             color: var(--color-acento-claro);
         }
+        
+        /* Contenedor del Libro/Brújula (Fondo Creativo) */
+        .creative-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        /* Simulación del Libro y la Brújula con CSS y Íconos */
+        .book-compass {
+            font-size: 12em;
+            color: var(--color-superficie);
+            position: relative;
+            transform: scale(1.5); /* Hace que la imagen sea grande */
+        }
 
-        /* Contenedor de enlaces */
+        .book-compass i {
+            filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+        }
+
+        .book-compass .fa-book-open {
+            color: var(--color-superficie); /* Base del libro */
+            position: absolute;
+        }
+
+        .book-compass .fa-compass {
+            color: var(--color-brillo); /* Brújula saliendo */
+            position: absolute;
+            top: -0.3em;
+            left: 0;
+            animation: rotateCompass 10s infinite linear; /* Animación de rotación */
+        }
+
+        @keyframes rotateCompass {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Animación de Letras Fugaces (Estrellas de Lenguaje) */
+        .shooting-letter {
+            position: absolute;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--color-acento-claro);
+            text-shadow: 0 0 5px var(--color-brillo);
+            opacity: 0;
+            animation: shoot 5s infinite cubic-bezier(0.1, 0, 0.5, 1);
+        }
+
+        @keyframes shoot {
+            0% { opacity: 0; transform: translate(0, 0) rotate(0); }
+            5% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { 
+                opacity: 0; 
+                transform: translate(300px, -300px) rotate(360deg); /* Trayectoria de estrella fugaz */
+            }
+        }
+
+        /* Navegación (Enlaces) */
         .link-container {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             justify-content: center;
             margin-top: 50px;
+            z-index: 10;
         }
 
         .link-item {
@@ -95,117 +132,126 @@
             align-items: center;
             text-decoration: none;
             color: var(--color-texto-claro);
-            font-size: 1.3em;
+            font-size: 1.1em;
             font-weight: bold;
-            transition: color 0.3s ease;
+            padding: 15px 25px;
+            border-radius: 10px;
+            background-color: var(--color-superficie);
+            transition: all 0.3s ease, transform 0.3s ease;
         }
 
         .link-item i {
-            font-size: 3.5em; /* Iconos grandes y llamativos */
-            color: var(--color-acento-vibrante);
-            margin-bottom: 10px;
-            transition: transform 0.3s ease, color 0.3s ease;
+            font-size: 2.5em; 
+            margin-bottom: 8px;
+            color: var(--color-brillo);
+            transition: color 0.3s ease;
+        }
+
+        /* Efecto de cambio de color al pasar el mouse en los enlaces */
+        .link-item:hover {
+            background-color: var(--color-hover-1); /* Color vibrante al hacer hover */
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--color-hover-1);
         }
 
         .link-item:hover i {
-            transform: translateY(-10px) scale(1.1); /* Efecto de "flotar" y crecer */
-            color: var(--color-acento-claro); /* Color del icono al pasar el mouse */
+            color: var(--color-texto-claro); /* Icono claro */
         }
 
-        .link-item:hover {
-            color: var(--color-acento-vibrante); /* Color del texto al pasar el mouse */
-        }
-
-        /* Pie de página sutil */
-        footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.8em;
-            opacity: 0.7;
-            z-index: 1;
-        }
-
-        /* JS para el cambio de color de fondo al pasar el mouse */
+        /* Cambio de color de fondo del BODY al pasar el mouse sobre toda la página */
         .hover-color-change-area {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0; /* Detrás del contenido pero encima de las estrellas */
-            pointer-events: auto; /* Para detectar el mouse */
+            z-index: 0; 
+            pointer-events: auto; 
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="background-animation" id="star-field"></div>
     <div class="hover-color-change-area" id="hover-area"></div>
 
+    <div class="creative-background">
+        <div class="book-compass">
+            <i class="fas fa-book-open"></i>
+            <i class="fas fa-compass"></i>
+        </div>
+        <div id="letter-stars"></div>
+    </div>
+
     <div class="content">
-        <h1>✨ Portal del Saber ✨</h1>
-        <p class="subtitle">Docente [Tu Nombre] | Explorando Castellano & English</p>
+        <h1>Mgtr. Jesús Álvarez Sáez</h1>
+        <p class="subtitle">Guía Bilingüe: Castellano & English | El Conocimiento es la Brújula</p>
 
         <div class="link-container">
             <a href="#" class="link-item">
-                <i class="fas fa-scroll"></i>
+                <i class="fas fa-microchip"></i>
+                <span>Plataforma Educativa</span>
+            </a>
+            <a href="#" class="link-item">
+                <i class="fas fa-file-signature"></i>
                 <span>Actas Académicas</span>
             </a>
             <a href="#" class="link-item">
-                <i class="fas fa-chart-line"></i>
+                <i class="fas fa-chart-area"></i>
                 <span>Informes Institucionales</span>
             </a>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025. Un Universo de Aprendizaje. 🚀</p>
-    </footer>
-
     <script>
-        // Animación de estrellas/partículas de fondo
-        const starField = document.getElementById('star-field');
-        const numStars = 100;
+        // --- Animación de Letras Fugaces (Castellano/English) ---
+        const letterStars = document.getElementById('letter-stars');
+        const chars = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z ñ Ñ ¡ ¿ . ,";
+        const letters = chars.split(' ');
+        const numLetters = 50;
 
-        for (let i = 0; i < numStars; i++) {
-            let star = document.createElement('div');
-            star.className = 'star';
-            star.style.width = `${Math.random() * 3 + 1}px`; // Tamaño entre 1 y 4px
-            star.style.height = star.style.width;
-            star.style.top = `${Math.random() * 100}vh`;
-            star.style.left = `${Math.random() * 100}vw`;
-            star.style.animationDelay = `${Math.random() * 5}s`; // Retraso aleatorio para el parpadeo
-            starField.appendChild(star);
+        for (let i = 0; i < numLetters; i++) {
+            let letter = document.createElement('span');
+            letter.className = 'shooting-letter';
+            letter.textContent = letters[Math.floor(Math.random() * letters.length)];
+            
+            // Posicionar cerca del "libro" (centro)
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            // Variación de posición inicial
+            letter.style.left = `${centerX + (Math.random() * 50 - 25)}px`; 
+            letter.style.top = `${centerY + (Math.random() * 50 - 25)}px`;
+            
+            letter.style.animationDelay = `${Math.random() * 5}s`;
+            letterStars.appendChild(letter);
         }
 
-        // Cambio de color de fondo al pasar el mouse
+        // --- Cambio de Color de Fondo al Mover el Mouse ---
         const body = document.body;
         const hoverArea = document.getElementById('hover-area');
+        
+        // Colores de cambio de fondo (todos oscuros o apagados)
         const colors = [
-            'var(--color-oscuro-principal)',
-            'var(--color-hover-1)',
-            'var(--color-hover-2)',
-            'var(--color-hover-3)',
-            '#4B0082', /* Índigo oscuro */
-            '#2F4F4F'  /* Gris Pizarra Oscuro */
+            'var(--color-fondo)', 
+            '#331A3A', // Púrpura oscuro
+            '#1A3A1A', // Verde bosque oscuro
+            '#3A3A1A', // Oliva oscuro
+            '#2F4F4F'  // Gris pizarra
         ];
         let currentColorIndex = 0;
 
-        hoverArea.addEventListener('mousemove', (e) => {
-            // Cambia el color principal del body solo si el mouse se ha movido lo suficiente
-            // o con una probabilidad para no ser demasiado intrusivo
-            if (Math.random() < 0.05) { // 5% de probabilidad de cambio por movimiento
+        hoverArea.addEventListener('mousemove', () => {
+            // Cambia el color con una baja probabilidad al mover el mouse
+            if (Math.random() < 0.03) { 
                 currentColorIndex = (currentColorIndex + 1) % colors.length;
                 body.style.backgroundColor = colors[currentColorIndex];
             }
         });
 
-        // Para resetear al color principal si el mouse sale del documento (opcional)
         document.addEventListener('mouseleave', () => {
-             body.style.backgroundColor = 'var(--color-oscuro-principal)';
-             currentColorIndex = 0; // Opcional: reiniciar al color inicial
+             body.style.backgroundColor = 'var(--color-fondo)'; // Vuelve al color base al salir
+             currentColorIndex = 0; 
         });
     </script>
 </body>
