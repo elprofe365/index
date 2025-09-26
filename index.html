@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧭 Mgtr. Jesús Álvarez Sáez | Guía Bilingüe</title>
+    <title>🧭 Mgtr. Jesús Álvarez Sáez | El Rincón Bilingüe</title>
     <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
         :root {
             /* Paleta Oscura Sincronizada */
-            --color-fondo: #1E1E3C; /* Azul noche profundo (Base) */
+            --color-fondo: #1A1A2E; /* Azul noche muy oscuro */
             --color-superficie: #2C2C54; /* Azul oscuro para elementos */
-            --color-brillo: #FDD835; /* Amarillo mostaza/dorado (Brújula/Guía) */
-            --color-acento: #00BCD4; /* Turquesa (Letras/Destacado) */
-            --color-texto-claro: #E0F7FA; /* Blanco azulado */
+            --color-brillo: #FFD700; /* Dorado vibrante para Guía/Brújula */
+            --color-acento: #00BCD4; /* Turquesa brillante */
+            --color-texto-claro: #E0F7FA; 
             
             /* Colores de Hover */
-            --color-hover-1: #FF8A65; /* Naranja suave (Divertido) */
-            --color-hover-2: #80CBC4; /* Verde menta (Cool) */
+            --color-hover-1: #FF8A65; /* Naranja suave */
+            --color-hover-2: #80CBC4; /* Verde menta */
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Bubblegum Sans', cursive; /* Fuente divertida de primaria */
+            font-family: 'Bubblegum Sans', cursive;
             background-color: var(--color-fondo);
             color: var(--color-texto-claro);
             display: flex;
@@ -37,122 +37,160 @@
             transition: background-color 0.8s ease-in-out; 
         }
 
-        /* --- Contenido Principal (Texto y Enlaces) --- */
-        .content {
-            text-align: center;
-            z-index: 10;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.3); /* Ligero fondo para aislar el texto */
-            border-radius: 15px;
-        }
-
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 5px;
-            color: var(--color-brillo);
-            text-shadow: 2px 2px var(--color-superficie); /* Borde para que destaque */
-            letter-spacing: 2px;
-        }
-
-        .subtitle {
-            font-size: 1.5em;
-            margin-bottom: 50px;
-            color: var(--color-acento);
-        }
-        
-        /* --- Contenedor de Enlaces --- */
-        .link-container {
-            display: flex;
-            gap: 25px;
-            justify-content: center;
-            z-index: 10;
-        }
-
-        .link-item {
-            text-decoration: none;
-            color: var(--color-texto-claro);
-            font-size: 1.4em;
-            padding: 15px 25px;
-            border-radius: 12px;
-            background-color: var(--color-superficie);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .link-item i {
-            font-size: 1.8em; 
-            margin-right: 10px;
-            color: var(--color-brillo);
-            transition: color 0.3s ease;
-        }
-
-        /* Efecto de Hover: cambio de color de fondo y de ícono */
-        .link-item:hover {
-            background-color: var(--color-hover-1); 
-            transform: translateY(-5px) scale(1.05); /* Rebote sutil */
-            box-shadow: 0 8px 20px var(--color-hover-1);
-        }
-        
-        /* --- Animación Creativa (Libro/Brújula) --- */
-        .creative-background {
-            position: fixed; /* Fijo para que no se mueva con el scroll */
-            top: 50px;
-            left: 50px;
-            z-index: 5; /* Detrás del texto */
+        /* --- Fondo Divertido (Emoticonos Semitransparentes) --- */
+        .emoji-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            transform: scale(0.9); /* Tamaño ajustado */
+            z-index: 0; /* Capa más baja */
+            opacity: 0.15; /* Semitransparente */
+            overflow: hidden;
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 3em;
+            color: var(--color-acento);
+            opacity: 0;
+            animation: fall 15s infinite linear;
+            text-shadow: 0 0 5px var(--color-acento);
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            5% { opacity: 1; }
+            95% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- Animación Creativa (Libro/Brújula) - Centrado Izquierda --- */
+        .creative-background {
+            position: fixed;
+            top: 50%;
+            left: 10%; /* Posicionado a la izquierda */
+            transform: translateY(-50%) scale(1.1); /* Centrado verticalmente y ligeramente más grande */
+            z-index: 5; 
+            pointer-events: none;
         }
         
         .book-compass {
             font-size: 8em;
             position: relative;
+            /* Animación principal de 'Bounce' */
+            animation: creativeBounce 4s infinite ease-in-out;
         }
 
-        /* El Libro: Base sólida */
+        @keyframes creativeBounce {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
         .book-compass .fa-book-open {
             color: var(--color-superficie); 
             filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.7));
         }
 
-        /* La Brújula: Animación de "Guía" */
+        /* Brújula con efecto de 'brillo' */
         .book-compass .fa-compass {
             color: var(--color-brillo); 
             position: absolute;
             top: -0.8em;
             left: 0.1em;
-            animation: pulseCompass 2s infinite alternate ease-in-out; /* Pulsación y rotación */
-            transform-origin: center;
+            animation: shinyGlow 1.5s infinite alternate ease-in-out; 
+            text-shadow: 0 0 15px var(--color-brillo);
         }
 
-        @keyframes pulseCompass {
-            0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-            50% { transform: scale(1.1) rotate(5deg); opacity: 1; }
-            100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+        @keyframes shinyGlow {
+            0% { opacity: 0.7; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
         }
 
-        /* Letras Fugaces (Estrellas de Lenguaje) */
+        /* Letras Fugaces (originándose desde el libro) */
         .shooting-letter {
             position: absolute;
-            font-size: 1.2em;
+            font-size: 1.3em;
             font-weight: bold;
             color: var(--color-acento);
             text-shadow: 0 0 5px var(--color-acento);
             opacity: 0;
-            /* Se originan cerca del libro y se dispersan */
-            animation: shoot 7s infinite cubic-bezier(0.1, 0, 0.5, 1);
+            animation: shoot 5s infinite cubic-bezier(0.1, 0, 0.5, 1);
         }
 
+        /* La animación de disparo se ajusta para salir del punto fijo izquierdo */
         @keyframes shoot {
             0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
             10% { opacity: 1; }
-            80% { opacity: 0.5; }
             100% { 
                 opacity: 0; 
-                transform: translate(350px, -350px) scale(1.5); /* Vuelo hacia afuera */
+                transform: translate(300px, 0) scale(1.5); /* Se dispara hacia la derecha */
             }
         }
 
-        /* --- Efecto de Cambio de Color de Fondo (Dinámico) --- */
+        /* --- Contenido Principal (Texto y Enlaces) --- */
+        .content {
+            text-align: center;
+            z-index: 10;
+            padding: 30px 50px;
+            margin-left: 20%; /* Para que el texto no choque con la animación izquierda */
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 3.8em;
+            margin-bottom: 5px;
+            color: var(--color-brillo);
+            text-shadow: 3px 3px var(--color-superficie);
+        }
+
+        .subtitle {
+            font-size: 1.6em;
+            margin-bottom: 50px;
+            color: var(--color-acento);
+        }
+        
+        /* Contenedor de Enlaces */
+        .link-container {
+            display: flex;
+            flex-direction: column; /* Cambiado a columna para que sean más grandes */
+            gap: 15px;
+            justify-content: center;
+            z-index: 10;
+            width: 100%;
+            max-width: 400px; /* Ancho máximo para los botones */
+            margin: 0 auto;
+        }
+
+        .link-item {
+            text-decoration: none;
+            color: var(--color-texto-claro);
+            font-size: 1.6em;
+            padding: 18px 25px;
+            border-radius: 15px;
+            background-color: var(--color-superficie);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link-item i {
+            font-size: 1.5em; 
+            margin-right: 15px;
+            color: var(--color-brillo);
+        }
+
+        /* Hover de Enlaces */
+        .link-item:hover {
+            background-color: var(--color-hover-1); 
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--color-hover-1);
+        }
+        
+        /* Cambio de color de fondo del BODY al pasar el mouse */
         .hover-color-change-area {
             position: fixed;
             top: 0;
@@ -167,6 +205,7 @@
 <body>
 
     <div class="hover-color-change-area" id="hover-area"></div>
+    <div class="emoji-rain" id="emoji-field"></div>
 
     <div class="creative-background">
         <div class="book-compass">
@@ -177,48 +216,61 @@
     </div>
 
     <div class="content">
-        <h1>¡Hola! Welcome to the Journey! 🚀</h1>
+        <h1>¡HELLO! 👋 ¡HOLA!</h1>
         <h1>Mgtr. Jesús Álvarez Sáez</h1>
-        <p class="subtitle">**Castellano & English Guide** | **Primaria**</p>
+        <p class="subtitle">Tu Guía de Aventuras Bilingües en Primaria.</p>
 
         <div class="link-container">
             <a href="#" class="link-item">
-                <i class="fas fa-desktop"></i>
+                <i class="fas fa-rocket"></i>
                 <span>Plataforma Educativa</span>
             </a>
             <a href="#" class="link-item">
-                <i class="fas fa-stamp"></i>
+                <i class="fas fa-star"></i>
                 <span>Actas Académicas</span>
             </a>
             <a href="#" class="link-item">
-                <i class="fas fa-scroll"></i>
+                <i class="fas fa-lightbulb"></i>
                 <span>Informes Institucionales</span>
             </a>
         </div>
     </div>
 
     <script>
-        // --- Animación de Letras Fugaces (Generación y Posición) ---
-        const letterStars = document.getElementById('letter-stars');
-        // Letras y signos comunes en ambos idiomas
-        const chars = "A E I O U a e i o u 1 2 3 * ? Ñ ñ"; 
-        const letters = chars.split(' ');
-        const numLetters = 40;
+        // --- Generación de Emoticonos de Fondo ---
+        const emojiField = document.getElementById('emoji-field');
+        const funEmojis = ["📚", "✏️", "🍎", "🌎", "🌟", "💡", "🧠", "👍", "🥳"];
+        const numEmojis = 30;
 
-        // Las letras deben nacer cerca del libro (que está en la esquina superior izquierda)
-        const bookX = 50 + (8 * 16 / 2); // Aprox. la posición X del centro del ícono
-        const bookY = 50 + (8 * 16 / 2); // Aprox. la posición Y del centro del ícono
+        for (let i = 0; i < numEmojis; i++) {
+            let emoji = document.createElement('span');
+            emoji.className = 'emoji';
+            emoji.textContent = funEmojis[Math.floor(Math.random() * funEmojis.length)];
+            
+            emoji.style.left = `${Math.random() * 100}vw`;
+            emoji.style.animationDelay = `${Math.random() * 10}s`;
+            emojiField.appendChild(emoji);
+        }
+        
+        // --- Generación de Letras Fugaces ---
+        const letterStars = document.getElementById('letter-stars');
+        const chars = "A B C D E F G H ñ Ñ 1 2 3 ! ?"; 
+        const letters = chars.split(' ');
+        const numLetters = 30;
+
+        // Las letras deben nacer cerca del libro
+        const bookCenterOffset = 150; // Ajuste manual basado en el tamaño del ícono
 
         for (let i = 0; i < numLetters; i++) {
             let letter = document.createElement('span');
             letter.className = 'shooting-letter';
             letter.textContent = letters[Math.floor(Math.random() * letters.length)];
             
-            // Posición inicial: cerca del libro/brújula
-            letter.style.left = `${bookX + (Math.random() * 80 - 40)}px`; 
-            letter.style.top = `${bookY + (Math.random() * 80 - 40)}px`;
+            // Posición inicial: cerca del libro/brújula (se ajusta con un poco de JS)
+            letter.style.left = `${bookCenterOffset + (Math.random() * 50 - 25)}px`; 
+            letter.style.top = `${bookCenterOffset + (Math.random() * 50 - 25)}px`;
             
-            letter.style.animationDelay = `${Math.random() * 7}s`;
+            letter.style.animationDelay = `${Math.random() * 5}s`;
             letterStars.appendChild(letter);
         }
 
@@ -228,15 +280,14 @@
         
         const colors = [
             'var(--color-fondo)', 
-            '#331A3A', // Púrpura oscuro
-            '#1A333A', // Cian oscuro
-            '#333A1A', // Oliva oscuro
-            '#3C1E1E'  // Rojo óxido oscuro
+            '#3A1A33', // Morado oscuro
+            '#1A3A3A', // Turquesa oscuro
+            '#3A3A1A', // Oliva oscuro
         ];
         let currentColorIndex = 0;
 
         hoverArea.addEventListener('mousemove', () => {
-            // Baja probabilidad de cambio para un efecto sutil
+            // Baja probabilidad de cambio (2%) para un efecto sutil y no epiléptico
             if (Math.random() < 0.02) { 
                 currentColorIndex = (currentColorIndex + 1) % colors.length;
                 body.style.backgroundColor = colors[currentColorIndex];
