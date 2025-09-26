@@ -1,285 +1,284 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎩 Mgtr. Jesús Álvarez Sáez | El Profe 365</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+/* Variables de color */
+:root {
+    --color-primary: #1a1a1a;    /* Fondo oscuro principal */
+    --color-secondary: #2c2c2c;  /* Fondo de elementos */
+    --color-accent: #ffb703;     /* Amarillo/Naranja de acento - destello */
+    --color-text-light: #f0f0f0; /* Texto claro */
+    --color-text-dark: #1a1a1a;  /* Texto oscuro (para botones/acentos) */
+}
+
+/* Base y tipografía */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita scroll horizontal */
+    position: relative; /* Para posicionar el icono de fondo */
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-accent);
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #ffd166; /* Un tono más claro del acento */
+}
+
+/* --- Encabezado y Menú (Header & Nav) --- */
+.header {
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Asegura que el menú esté encima */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.logo h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: var(--color-accent); /* Lema en color de acento */
+    text-shadow: 0 0 5px rgba(255, 183, 3, 0.5); /* Efecto de brillo */
+}
+
+.nav-menu a {
+    color: var(--color-text-light);
+    margin-left: 20px;
+    font-weight: 700;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s, color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+}
+
+.menu-toggle {
+    display: none; /* Oculto en escritorio */
+    background: none;
+    border: none;
+    color: var(--color-accent);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* --- Sección Principal (Hero) --- */
+.hero {
+    /* Imagen de fondo dinámica y semitransparente */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+                      url('ruta/a/tu/imagen-letras-banderas.jpg'); /* ¡Reemplazar! */
+    background-size: cover;
+    background-position: center;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 5%;
+}
+
+.hero-content {
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo para resaltar texto */
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-light);
+}
+
+.hero h2 strong {
+    color: var(--color-accent);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.cta-button:hover {
+    background-color: #ffd166;
+    transform: translateY(-2px);
+}
+
+/* --- Icono de Mago Interactivo (Fondo) --- */
+.magic-hat-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Asegura que no bloquee clics */
+    overflow: hidden;
+    opacity: 0.1; /* Semi-transparente y sobrio */
+}
+
+.letter {
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
+    color: var(--color-accent);
+    animation: magic-float 10s infinite ease-in-out;
+}
+
+/* Posiciones iniciales variadas */
+.letter-1 { top: 10%; left: 5%; animation-duration: 9s; }
+.letter-2 { bottom: 20%; right: 15%; animation-duration: 12s; font-size: 3rem; }
+.letter-3 { top: 40%; right: 5%; animation-duration: 8s; }
+.letter-4 { bottom: 5%; left: 30%; animation-duration: 11s; font-size: 5rem; }
+.letter-5 { top: 25%; left: 45%; animation-duration: 7s; }
+.letter-6 { bottom: 40%; left: 5%; animation-duration: 10s; }
+
+@keyframes magic-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
+    50% { transform: translateY(-30px) rotate(5deg); opacity: 0.3; }
+}
+
+/* --- Sección de Información (Cards) --- */
+.info-section {
+    padding: 4rem 5%;
+    text-align: center;
+    background-color: var(--color-secondary); /* Un poco más claro que el fondo */
+}
+
+.info-section h3 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--color-accent);
+}
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap; /* Para responsividad */
+}
+
+.card {
+    background-color: var(--color-primary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    text-align: left;
+    border-left: 5px solid var(--color-accent);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 183, 3, 0.1);
+}
+
+.card h4 {
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+/* Iconos de las Cards (simulados sin librerías externas) */
+.icon-book::before, .icon-file::before {
+    content: "📘"; /* Usamos emojis si no se tiene FontAwesome */
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.icon-file::before {
+    content: "📄";
+}
+
+.card-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+
+/* ----------------------------------------------------------------- */
+/* --- RESPONSIVIDAD (Diseño para Móviles, Tablets e iPads) --- */
+/* ----------------------------------------------------------------- */
+
+@media (max-width: 768px) {
     
-    <style>
-        :root {
-            /* Paleta Oscura Sincronizada */
-            --color-fondo: #1A1A2E; 
-            --color-superficie: #2C2C54; 
-            --color-brillo: #FDD835; /* Dorado/Amarillo (Estrellas/Magia) */
-            --color-acento: #00BCD4; /* Turquesa (Letras/Destacado) */
-            --color-texto-claro: #E0F7FA; 
-            
-            /* Colores de Hover */
-            --color-hover-1: #FF8A65; 
-            --color-hover-2: #80CBC4; 
-        }
+    /* Adaptación del Menú (Mobile First) */
+    .nav-menu {
+        display: none; /* Ocultar el menú en pantallas pequeñas */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Debajo del header */
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Bubblegum Sans', cursive;
-            background-color: var(--color-fondo);
-            color: var(--color-texto-claro);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-            position: relative;
-            transition: background-color 0.8s ease-in-out; 
-        }
-        
-        /* --- Fondo Divertido (Emoticonos Semitransparentes) --- */
-        .emoji-rain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0; 
-            opacity: 0.1; /* Más sutil */
-            overflow: hidden;
-        }
+    .nav-menu a {
+        margin: 0;
+        padding: 1rem 5%;
+        border-bottom: 1px solid var(--color-secondary);
+        text-align: center;
+    }
 
-        .emoji {
-            position: absolute;
-            font-size: 3em;
-            color: var(--color-acento);
-            opacity: 0;
-            animation: fall 15s infinite linear;
-            text-shadow: 0 0 5px var(--color-acento);
-        }
+    /* Mostrar el botón de toggle */
+    .menu-toggle {
+        display: block;
+    }
 
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-            5% { opacity: 1; }
-            95% { opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
+    /* Script o CSS/JS para mostrar el menú al hacer clic en el toggle */
+    /* Ejemplo: .nav-menu.active { display: flex; } */
 
-        /* --- Animación Creativa (El Sombrero Mágico) - Centrado Izquierda --- */
-        .creative-background {
-            position: fixed;
-            top: 50%;
-            left: 10%; 
-            transform: translateY(-50%) scale(1.1); 
-            z-index: 5; 
-            pointer-events: none;
-        }
-        
-        .magic-hat {
-            font-size: 10em; 
-            position: relative;
-            color: var(--color-superficie); 
-            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.9)); /* Sombra más fuerte para sobriedad */
-            /* Animación de "respiración" para el sombrero */
-            animation: hatBreathe 4s infinite alternate ease-in-out;
-        }
+    /* Hero Section */
+    .hero {
+        min-height: 50vh;
+    }
+    
+    .hero h2 {
+        font-size: 1.8rem;
+    }
 
-        @keyframes hatBreathe {
-            0% { transform: scale(1) rotate(-1deg); }
-            100% { transform: scale(1.02) rotate(1deg); }
-        }
+    .hero p {
+        font-size: 1rem;
+    }
 
-        /* El Sombrero (Estilo Mago) */
-        .magic-hat i {
-            color: var(--color-superficie); /* Base del sombrero oscuro */
-            filter: drop-shadow(0 0 5px var(--color-brillo)); /* Pequeño brillo mágico */
-        }
-        
-        /* Simulación de letras fugaces saliendo del sombrero */
-        .magic-letter {
-            position: absolute;
-            top: 0.1em; /* Sale de la punta del sombrero */
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.5em; 
-            font-weight: bold;
-            color: var(--color-brillo); /* Dorado como la magia */
-            opacity: 0;
-            white-space: nowrap;
-            text-shadow: 0 0 8px var(--color-brillo); /* Semibrillante */
-            animation: magicShoot 5s infinite ease-out; 
-        }
+    /* Cards */
+    .card-container {
+        flex-direction: column; /* Apilar cards en móvil */
+        align-items: center;
+    }
 
-        @keyframes magicShoot {
-            0% { opacity: 0; transform: translate(-50%, 0) scale(0.5); }
-            10% { opacity: 0.7; transform: translate(-50%, -10px) scale(0.8); } /* Semitransparente */
-            100% { opacity: 0; transform: translate(200px, -150px) scale(0.7); } /* Se aleja como una estrella fugaz */
-        }
-
-        /* Contenido Principal (Texto y Enlaces) - Mismo formato */
-        .content {
-            text-align: center;
-            z-index: 10;
-            padding: 30px 50px;
-            margin-left: 20%; 
-            max-width: 600px;
-        }
-
-        h1 {
-            font-size: 3.8em;
-            margin-bottom: 5px;
-            color: var(--color-brillo);
-            text-shadow: 3px 3px var(--color-superficie);
-        }
-
-        .subtitle {
-            font-size: 1.6em;
-            margin-bottom: 20px; 
-            color: var(--color-acento);
-        }
-
-        .lema {
-            font-size: 2em; 
-            font-weight: bold;
-            color: var(--color-acento);
-            text-shadow: 2px 2px var(--color-superficie);
-            margin-bottom: 50px;
-            animation: pulseLema 2s infinite alternate ease-in-out;
-        }
-
-        @keyframes pulseLema {
-            0% { transform: scale(1); opacity: 0.9; }
-            100% { transform: scale(1.05); opacity: 1; }
-        }
-        
-        .link-container {
-            display: flex;
-            flex-direction: column; 
-            gap: 15px;
-            justify-content: center;
-            z-index: 10;
-            width: 100%;
-            max-width: 400px; 
-            margin: 0 auto;
-        }
-
-        .link-item {
-            text-decoration: none;
-            color: var(--color-texto-claro);
-            font-size: 1.6em;
-            padding: 18px 25px;
-            border-radius: 15px;
-            background-color: var(--color-superficie);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .link-item i {
-            font-size: 1.5em; 
-            margin-right: 15px;
-            color: var(--color-brillo);
-        }
-
-        .link-item:hover {
-            background-color: var(--color-hover-1); 
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px var(--color-hover-1);
-        }
-        
-        .hover-color-change-area {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0; 
-            pointer-events: auto; 
-        }
-    </style>
-</head>
-<body>
-
-    <div class="hover-color-change-area" id="hover-area"></div>
-    <div class="emoji-rain" id="emoji-field"></div>
-
-    <div class="creative-background">
-        <div class="magic-hat">
-             <i class="fas fa-hat-wizard"></i>
-            
-            <span class="magic-letter" style="animation-delay: 0s;">A</span>
-            <span class="magic-letter" style="animation-delay: 1s;">e</span>
-            <span class="magic-letter" style="animation-delay: 2s;">B</span>
-            <span class="magic-letter" style="animation-delay: 3s;">ñ</span>
-            <span class="magic-letter" style="animation-delay: 4s;">C</span>
-            <span class="magic-letter" style="animation-delay: 5s;">!</span>
-        </div>
-    </div>
-
-    <div class="content">
-        <h1>¡HELLO! 👋 ¡HOLA!</h1>
-        <h1>Mgtr. Jesús Álvarez Sáez</h1>
-        <p class="subtitle">Descubre la Magia del Castellano e Inglés.</p>
-        <p class="lema">¡El Profe 365!</p>
-
-        <div class="link-container">
-            <a href="#" class="link-item">
-                <i class="fas fa-rocket"></i>
-                <span>Plataforma Educativa</span>
-            </a>
-            <a href="#" class="link-item">
-                <i class="fas fa-star"></i>
-                <span>Actas Académicas</span>
-            </a>
-            <a href="#" class="link-item">
-                <i class="fas fa-lightbulb"></i>
-                <span>Informes Institucionales</span>
-            </a>
-        </div>
-    </div>
-
-    <script>
-        // --- Generación de Emoticonos de Fondo ---
-        const emojiField = document.getElementById('emoji-field');
-        const funEmojis = ["📚", "✏️", "🍎", "🌎", "🌟", "💡", "🧠", "👍", "🥳"];
-        const numEmojis = 30;
-
-        for (let i = 0; i < numEmojis; i++) {
-            let emoji = document.createElement('span');
-            emoji.className = 'emoji';
-            emoji.textContent = funEmojis[Math.floor(Math.random() * funEmojis.length)];
-            
-            emoji.style.left = `${Math.random() * 100}vw`;
-            emoji.style.animationDelay = `${Math.random() * 10}s`;
-            emojiField.appendChild(emoji);
-        }
-        
-        // --- Cambio de Color de Fondo al Mover el Mouse ---
-        const body = document.body;
-        const hoverArea = document.getElementById('hover-area');
-        
-        const colors = [
-            'var(--color-fondo)', 
-            '#3A1A33', 
-            '#1A3A3A', 
-            '#3A3A1A', 
-        ];
-        let currentColorIndex = 0;
-
-        hoverArea.addEventListener('mousemove', () => {
-            if (Math.random() < 0.02) { 
-                currentColorIndex = (currentColorIndex + 1) % colors.length;
-                body.style.backgroundColor = colors[currentColorIndex];
-            }
-        });
-
-        document.addEventListener('mouseleave', () => {
-             body.style.backgroundColor = 'var(--color-fondo)';
-             currentColorIndex = 0; 
-        });
-    </script>
-</body>
-</html>
+    .card {
+        max-width: 100%;
+    }
+}
