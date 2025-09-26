@@ -1,284 +1,61 @@
-/* Variables de color */
-:root {
-    --color-primary: #1a1a1a;    /* Fondo oscuro principal */
-    --color-secondary: #2c2c2c;  /* Fondo de elementos */
-    --color-accent: #ffb703;     /* Amarillo/Naranja de acento - destello */
-    --color-text-light: #f0f0f0; /* Texto claro */
-    --color-text-dark: #1a1a1a;  /* Texto oscuro (para botones/acentos) */
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El profe 365 | Castellano e Inglés</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Aquí iría todo el código CSS de la siguiente sección */
+        /* Para mayor orden, se recomienda mover este CSS a un archivo styles.css */
+    </style>
+    </head>
+<body>
 
-/* Base y tipografía */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    <header class="header">
+        <div class="logo">
+            <h1>El profe 365</h1>
+        </div>
+        <nav class="nav-menu">
+            <a href="#plataforma">Acceso a la plataforma</a>
+            <a href="#actas">Actas escolares</a>
+            <a href="#informes">Informes institucionales</a>
+        </nav>
+        <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+    </header>
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--color-primary);
-    color: var(--color-text-light);
-    line-height: 1.6;
-    overflow-x: hidden; /* Evita scroll horizontal */
-    position: relative; /* Para posicionar el icono de fondo */
-    min-height: 100vh;
-}
+    <main class="hero">
+        <div class="hero-content">
+            <h2>Dominando el **Castellano** y explorando el **Inglés**</h2>
+            <p>Un espacio interactivo y dinámico para el aprendizaje de idiomas en primaria. ¡Bienvenidos al aula digital!</p>
+            <a href="#plataforma" class="cta-button">Ir a la Plataforma</a>
+        </div>
+    </main>
 
-a {
-    text-decoration: none;
-    color: var(--color-accent);
-    transition: color 0.3s;
-}
+    <section class="info-section">
+        <h3>Recursos Clave para Padres y Alumnos</h3>
+        <div class="card-container">
+            <div class="card">
+                <h4><i class="icon-book"></i>Actas Escolares</h4>
+                <p>Consulta las notas y evaluaciones más recientes del periodo académico.</p>
+                <a href="#actas" class="card-link">Ver Actas</a>
+            </div>
+            <div class="card">
+                <h4><i class="icon-file"></i>Informes Institucionales</h4>
+                <p>Documentos oficiales, circulares y comunicados importantes del centro.</p>
+                <a href="#informes" class="card-link">Ver Informes</a>
+            </div>
+        </div>
+    </section>
 
-a:hover {
-    color: #ffd166; /* Un tono más claro del acento */
-}
+    <div class="magic-hat-bg">
+        <div class="letter letter-1">A</div>
+        <div class="letter letter-2">ñ</div>
+        <div class="letter letter-3">Z</div>
+        <div class="letter letter-4">?</div>
+        <div class="letter letter-5">!</div>
+        <div class="letter letter-6">B</div>
+    </div>
 
-/* --- Encabezado y Menú (Header & Nav) --- */
-.header {
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-transparente */
-    padding: 1rem 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* Asegura que el menú esté encima */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.logo h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    color: var(--color-accent); /* Lema en color de acento */
-    text-shadow: 0 0 5px rgba(255, 183, 3, 0.5); /* Efecto de brillo */
-}
-
-.nav-menu a {
-    color: var(--color-text-light);
-    margin-left: 20px;
-    font-weight: 700;
-    padding: 0.5rem 0;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom 0.3s, color 0.3s;
-}
-
-.nav-menu a:hover {
-    color: var(--color-accent);
-    border-bottom: 2px solid var(--color-accent);
-}
-
-.menu-toggle {
-    display: none; /* Oculto en escritorio */
-    background: none;
-    border: none;
-    color: var(--color-accent);
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-/* --- Sección Principal (Hero) --- */
-.hero {
-    /* Imagen de fondo dinámica y semitransparente */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
-                      url('ruta/a/tu/imagen-letras-banderas.jpg'); /* ¡Reemplazar! */
-    background-size: cover;
-    background-position: center;
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem 5%;
-}
-
-.hero-content {
-    max-width: 800px;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo para resaltar texto */
-    padding: 2rem;
-    border-radius: 10px;
-}
-
-.hero h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-text-light);
-}
-
-.hero h2 strong {
-    color: var(--color-accent);
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-.cta-button {
-    display: inline-block;
-    background-color: var(--color-accent);
-    color: var(--color-text-dark);
-    padding: 0.8rem 2rem;
-    border-radius: 5px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.cta-button:hover {
-    background-color: #ffd166;
-    transform: translateY(-2px);
-}
-
-/* --- Icono de Mago Interactivo (Fondo) --- */
-.magic-hat-bg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Asegura que no bloquee clics */
-    overflow: hidden;
-    opacity: 0.1; /* Semi-transparente y sobrio */
-}
-
-.letter {
-    position: absolute;
-    font-family: 'Poppins', sans-serif;
-    font-size: 4rem;
-    color: var(--color-accent);
-    animation: magic-float 10s infinite ease-in-out;
-}
-
-/* Posiciones iniciales variadas */
-.letter-1 { top: 10%; left: 5%; animation-duration: 9s; }
-.letter-2 { bottom: 20%; right: 15%; animation-duration: 12s; font-size: 3rem; }
-.letter-3 { top: 40%; right: 5%; animation-duration: 8s; }
-.letter-4 { bottom: 5%; left: 30%; animation-duration: 11s; font-size: 5rem; }
-.letter-5 { top: 25%; left: 45%; animation-duration: 7s; }
-.letter-6 { bottom: 40%; left: 5%; animation-duration: 10s; }
-
-@keyframes magic-float {
-    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
-    50% { transform: translateY(-30px) rotate(5deg); opacity: 0.3; }
-}
-
-/* --- Sección de Información (Cards) --- */
-.info-section {
-    padding: 4rem 5%;
-    text-align: center;
-    background-color: var(--color-secondary); /* Un poco más claro que el fondo */
-}
-
-.info-section h3 {
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    color: var(--color-accent);
-}
-
-.card-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap; /* Para responsividad */
-}
-
-.card {
-    background-color: var(--color-primary);
-    padding: 1.5rem;
-    border-radius: 8px;
-    flex: 1;
-    min-width: 280px;
-    max-width: 400px;
-    text-align: left;
-    border-left: 5px solid var(--color-accent);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(255, 183, 3, 0.1);
-}
-
-.card h4 {
-    color: var(--color-accent);
-    margin-bottom: 0.5rem;
-    font-size: 1.25rem;
-}
-
-/* Iconos de las Cards (simulados sin librerías externas) */
-.icon-book::before, .icon-file::before {
-    content: "📘"; /* Usamos emojis si no se tiene FontAwesome */
-    display: inline-block;
-    margin-right: 10px;
-    font-size: 1.2em;
-}
-
-.icon-file::before {
-    content: "📄";
-}
-
-.card-link {
-    display: inline-block;
-    margin-top: 1rem;
-    font-weight: bold;
-}
-
-
-/* ----------------------------------------------------------------- */
-/* --- RESPONSIVIDAD (Diseño para Móviles, Tablets e iPads) --- */
-/* ----------------------------------------------------------------- */
-
-@media (max-width: 768px) {
-    
-    /* Adaptación del Menú (Mobile First) */
-    .nav-menu {
-        display: none; /* Ocultar el menú en pantallas pequeñas */
-        flex-direction: column;
-        position: absolute;
-        top: 100%; /* Debajo del header */
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
-        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
-    }
-
-    .nav-menu a {
-        margin: 0;
-        padding: 1rem 5%;
-        border-bottom: 1px solid var(--color-secondary);
-        text-align: center;
-    }
-
-    /* Mostrar el botón de toggle */
-    .menu-toggle {
-        display: block;
-    }
-
-    /* Script o CSS/JS para mostrar el menú al hacer clic en el toggle */
-    /* Ejemplo: .nav-menu.active { display: flex; } */
-
-    /* Hero Section */
-    .hero {
-        min-height: 50vh;
-    }
-    
-    .hero h2 {
-        font-size: 1.8rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    /* Cards */
-    .card-container {
-        flex-direction: column; /* Apilar cards en móvil */
-        align-items: center;
-    }
-
-    .card {
-        max-width: 100%;
-    }
-}
+</body>
+</html>
