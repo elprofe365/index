@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🦉 Mgtr. Jesús Álvarez Sáez | El Profe 365</title>
+    <title>🎩 Mgtr. Jesús Álvarez Sáez | El Profe 365</title>
     <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
@@ -12,8 +12,8 @@
             /* Paleta Oscura Sincronizada */
             --color-fondo: #1A1A2E; 
             --color-superficie: #2C2C54; 
-            --color-brillo: #FDD835; /* Dorado/Amarillo (Ojos del Búho/Brillo) */
-            --color-acento: #00BCD4; /* Turquesa (Burbujas de Texto/Lema) */
+            --color-brillo: #FDD835; /* Dorado/Amarillo (Estrellas/Magia) */
+            --color-acento: #00BCD4; /* Turquesa (Letras/Destacado) */
             --color-texto-claro: #E0F7FA; 
             
             /* Colores de Hover */
@@ -46,7 +46,7 @@
             height: 100%;
             pointer-events: none;
             z-index: 0; 
-            opacity: 0.15; 
+            opacity: 0.1; /* Más sutil */
             overflow: hidden;
         }
 
@@ -66,7 +66,7 @@
             100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
 
-        /* --- Animación Creativa (El Búho Parlanchín) - Centrado Izquierda --- */
+        /* --- Animación Creativa (El Sombrero Mágico) - Centrado Izquierda --- */
         .creative-background {
             position: fixed;
             top: 50%;
@@ -76,52 +76,47 @@
             pointer-events: none;
         }
         
-        .knowledge-owl {
+        .magic-hat {
             font-size: 10em; 
             position: relative;
-            color: var(--color-superficie); /* Color principal del sombrero/búho */
-            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.7));
-            animation: owlTalk 2s infinite alternate ease-in-out;
+            color: var(--color-superficie); 
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.9)); /* Sombra más fuerte para sobriedad */
+            /* Animación de "respiración" para el sombrero */
+            animation: hatBreathe 4s infinite alternate ease-in-out;
         }
 
-        @keyframes owlTalk {
-            0% { transform: scaleY(1) translateY(0) rotate(-2deg); }
-            50% { transform: scaleY(0.98) translateY(5px) rotate(2deg); }
-            100% { transform: scaleY(1) translateY(0) rotate(-2deg); }
+        @keyframes hatBreathe {
+            0% { transform: scale(1) rotate(-1deg); }
+            100% { transform: scale(1.02) rotate(1deg); }
         }
 
-        .knowledge-owl i {
-            color: var(--color-brillo); /* Color de los detalles del búho/sombrero */
-            text-shadow: 0 0 10px var(--color-brillo);
-        }
-
-        /* --- Expresiones Educativas (Burbujas/Letras Fugaces desde el Sombrero) --- */
-        .thought-bubble {
-            position: absolute;
-            top: -0.5em; /* Ajustado para que salga de la parte superior del sombrero */
-            left: 50%;
-            transform: translateX(-50%); /* Centra la burbuja sobre el sombrero */
-            padding: 5px 10px;
-            border-radius: 15px;
-            background-color: var(--color-acento);
-            color: var(--color-fondo);
-            font-size: 1em; /* Más pequeña */
-            font-weight: bold;
-            opacity: 0;
-            white-space: nowrap;
-            animation: shootFromHat 8s infinite ease-out; /* Animación de salida */
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.2); /* Semi-brillante */
-        }
-
-        @keyframes shootFromHat {
-            0% { opacity: 0; transform: translate(-50%, 0) scale(0.5); }
-            5% { opacity: 0.6; transform: translate(-50%, -10px) scale(0.8); } /* Semitransparente */
-            15% { opacity: 0.8; transform: translate(50px, -50px) scale(1); } /* Sale del sombrero y sube/deriva */
-            70% { opacity: 0.6; }
-            100% { opacity: 0; transform: translate(250px, -150px) scale(0.7); } /* Se aleja y desvanece */
+        /* El Sombrero (Estilo Mago) */
+        .magic-hat i {
+            color: var(--color-superficie); /* Base del sombrero oscuro */
+            filter: drop-shadow(0 0 5px var(--color-brillo)); /* Pequeño brillo mágico */
         }
         
+        /* Simulación de letras fugaces saliendo del sombrero */
+        .magic-letter {
+            position: absolute;
+            top: 0.1em; /* Sale de la punta del sombrero */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5em; 
+            font-weight: bold;
+            color: var(--color-brillo); /* Dorado como la magia */
+            opacity: 0;
+            white-space: nowrap;
+            text-shadow: 0 0 8px var(--color-brillo); /* Semibrillante */
+            animation: magicShoot 5s infinite ease-out; 
+        }
+
+        @keyframes magicShoot {
+            0% { opacity: 0; transform: translate(-50%, 0) scale(0.5); }
+            10% { opacity: 0.7; transform: translate(-50%, -10px) scale(0.8); } /* Semitransparente */
+            100% { opacity: 0; transform: translate(200px, -150px) scale(0.7); } /* Se aleja como una estrella fugaz */
+        }
+
         /* Contenido Principal (Texto y Enlaces) - Mismo formato */
         .content {
             text-align: center;
@@ -140,12 +135,12 @@
 
         .subtitle {
             font-size: 1.6em;
-            margin-bottom: 20px; /* Menos espacio para añadir el lema */
+            margin-bottom: 20px; 
             color: var(--color-acento);
         }
 
         .lema {
-            font-size: 2em; /* Tamaño del lema */
+            font-size: 2em; 
             font-weight: bold;
             color: var(--color-acento);
             text-shadow: 2px 2px var(--color-superficie);
@@ -212,20 +207,22 @@
     <div class="emoji-rain" id="emoji-field"></div>
 
     <div class="creative-background">
-        <div class="knowledge-owl">
+        <div class="magic-hat">
              <i class="fas fa-hat-wizard"></i>
             
-            <span class="thought-bubble" style="animation-delay: 0s;">¡Hola, amigo!</span>
-            <span class="thought-bubble" style="animation-delay: 2s;">Learn & Grow!</span>
-            <span class="thought-bubble" style="animation-delay: 4s;">¡Leer es volar!</span>
-            <span class="thought-bubble" style="animation-delay: 6s;">Knowledge is magic!</span>
+            <span class="magic-letter" style="animation-delay: 0s;">A</span>
+            <span class="magic-letter" style="animation-delay: 1s;">e</span>
+            <span class="magic-letter" style="animation-delay: 2s;">B</span>
+            <span class="magic-letter" style="animation-delay: 3s;">ñ</span>
+            <span class="magic-letter" style="animation-delay: 4s;">C</span>
+            <span class="magic-letter" style="animation-delay: 5s;">!</span>
         </div>
     </div>
 
     <div class="content">
         <h1>¡HELLO! 👋 ¡HOLA!</h1>
         <h1>Mgtr. Jesús Álvarez Sáez</h1>
-        <p class="subtitle">Tu Guía de Aventuras Bilingües en Primaria.</p>
+        <p class="subtitle">Descubre la Magia del Castellano e Inglés.</p>
         <p class="lema">¡El Profe 365!</p>
 
         <div class="link-container">
