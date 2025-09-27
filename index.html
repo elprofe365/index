@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Elprofe365</title>
     <style>
-        /* Paleta de colores inspirada en un bosque encantado y el escudo */
+        /* Paleta de colores inspirada en una galaxia y el escudo */
         :root {
-            --forest-green: #1B4D3E; /* Verde oscuro para el fondo y botones */
-            --leaf-green: #4CAF50; /* Verde claro para hojas */
-            --golden-yellow: #FFD700; /* Amarillo dorado para luciérnagas y bordes */
-            --white: #FFFFFF; /* Blanco para textos */
-            --brown: #5C4033; /* Marrón para acentos */
+            --space-dark: #1C2526; /* Azul oscuro para el fondo galáctico */
+            --star-yellow: #FFD700; /* Amarillo vibrante para estrellas y bordes */
+            --planet-green: #228B22; /* Verde del escudo para planetas y botones */
+            --planet-purple: #6A5ACD; /* Morado para planetas */
+            --white: #FFFFFF; /* Blanco para textos y brillo */
+            --glow-white: #E6E6FA; /* Blanco suave para efectos de brillo */
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Comic Sans MS', cursive, sans-serif; /* Fuente divertida para niños */
-            background: linear-gradient(to bottom, var(--forest-green), var(--leaf-green)); /* Fondo degradado de bosque */
+            background: linear-gradient(to bottom, var(--space-dark), #2F4F4F); /* Fondo degradado galáctico */
             overflow-x: hidden; /* Evitar desplazamiento horizontal */
             color: var(--white);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
@@ -29,7 +30,7 @@
             justify-content: center; /* Centra todo verticalmente */
         }
 
-        /* Fondo dinámico con hojas que caen y luciérnagas */
+        /* Fondo dinámico con estrellas y planetas */
         .background {
             position: fixed;
             top: 0;
@@ -40,105 +41,66 @@
             overflow: hidden;
         }
 
-        .leaf {
+        .star {
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--leaf-green);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Forma de hoja */
-            opacity: 0.7;
-            animation: fallLeaves 10s linear infinite;
-        }
-
-        .leaf:nth-child(1) {
-            left: 10%;
-            animation-duration: 12s;
-            animation-delay: 0s;
-        }
-
-        .leaf:nth-child(2) {
-            left: 30%;
-            animation-duration: 15s;
-            animation-delay: 2s;
-        }
-
-        .leaf:nth-child(3) {
-            left: 50%;
-            animation-duration: 13s;
-            animation-delay: 4s;
-        }
-
-        .leaf:nth-child(4) {
-            left: 70%;
-            animation-duration: 11s;
-            animation-delay: 6s;
-        }
-
-        .leaf:nth-child(5) {
-            left: 90%;
-            animation-duration: 14s;
-            animation-delay: 8s;
-        }
-
-        @keyframes fallLeaves {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0.3;
-            }
-        }
-
-        .firefly {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--golden-yellow);
+            width: 6px;
+            height: 6px;
+            background: var(--star-yellow);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--golden-yellow), 0 0 20px var(--golden-yellow);
-            animation: glowFirefly 3s ease-in-out infinite, moveFirefly 10s linear infinite;
+            box-shadow: 0 0 8px var(--star-yellow);
+            animation: twinkleStar 2s ease-in-out infinite;
         }
 
-        .firefly:nth-child(1) {
+        .star:nth-child(1) { left: 10%; top: 15%; animation-delay: 0s; }
+        .star:nth-child(2) { left: 25%; top: 30%; animation-delay: 0.5s; }
+        .star:nth-child(3) { left: 40%; top: 45%; animation-delay: 1s; }
+        .star:nth-child(4) { left: 55%; top: 60%; animation-delay: 1.5s; }
+        .star:nth-child(5) { left: 70%; top: 25%; animation-delay: 0.3s; }
+        .star:nth-child(6) { left: 85%; top: 40%; animation-delay: 0.8s; }
+
+        @keyframes twinkleStar {
+            0%, 100% { opacity: 0.4; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            animation: orbitPlanet 20s linear infinite;
+        }
+
+        .planet:nth-child(1) {
+            width: 30px;
+            height: 30px;
+            background: var(--planet-green);
             left: 20%;
             top: 20%;
-            animation-duration: 8s;
+            animation-duration: 15s;
         }
 
-        .firefly:nth-child(2) {
-            left: 40%;
-            top: 40%;
-            animation-duration: 9s;
+        .planet:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            background: var(--planet-purple);
+            left: 60%;
+            top: 60%;
+            animation-duration: 18s;
             animation-delay: 2s;
         }
 
-        .firefly:nth-child(3) {
-            left: 60%;
-            top: 60%;
-            animation-duration: 7s;
+        .planet:nth-child(3) {
+            width: 25px;
+            height: 25px;
+            background: var(--star-yellow);
+            left: 80%;
+            top: 30%;
+            animation-duration: 22s;
             animation-delay: 4s;
         }
 
-        .firefly:nth-child(4) {
-            left: 80%;
-            top: 80%;
-            animation-duration: 10s;
-            animation-delay: 6s;
-        }
-
-        @keyframes glowFirefly {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        @keyframes moveFirefly {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(50px, -50px); }
-            50% { transform: translate(-50px, 50px); }
-            75% { transform: translate(50px, 50px); }
-            100% { transform: translate(0, 0); }
+        @keyframes orbitPlanet {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
         }
 
         /* Contenedor principal para centrar todo */
@@ -151,6 +113,7 @@
             max-width: 1200px;
             padding: 20px;
             box-sizing: border-box;
+            z-index: 1; /* Asegura que el contenido esté sobre el fondo */
         }
 
         /* Cabecera con logo */
@@ -162,7 +125,7 @@
         header img {
             width: 120px;
             height: auto;
-            border: 5px solid var(--golden-yellow);
+            border: 5px solid var(--star-yellow);
             border-radius: 50%;
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
@@ -191,8 +154,8 @@
             justify-content: center;
             width: 200px;
             height: 200px;
-            background: var(--forest-green);
-            border: 5px solid var(--golden-yellow);
+            background: var(--planet-green);
+            border: 5px solid var(--star-yellow);
             border-radius: 20px;
             text-decoration: none;
             color: var(--white);
@@ -211,7 +174,7 @@
         .button i {
             font-size: 50px;
             margin-bottom: 10px;
-            color: var(--golden-yellow); /* Íconos en dorado para combinar con el tema */
+            color: var(--star-yellow); /* Íconos en amarillo para combinar con el tema */
         }
 
         /* Responsividad para móviles */
@@ -230,14 +193,14 @@
                 width: 100px;
             }
 
-            .leaf {
-                width: 15px !important;
-                height: 15px !important;
+            .star {
+                width: 5px !important;
+                height: 5px !important;
             }
 
-            .firefly {
-                width: 6px !important;
-                height: 6px !important;
+            .planet {
+                width: 20px !important;
+                height: 20px !important;
             }
         }
 
@@ -252,14 +215,14 @@
                 font-size: 30px;
             }
 
-            .leaf {
-                width: 12px !important;
-                height: 12px !important;
+            .star {
+                width: 4px !important;
+                height: 4px !important;
             }
 
-            .firefly {
-                width: 5px !important;
-                height: 5px !important;
+            .planet {
+                width: 15px !important;
+                height: 15px !important;
             }
         }
     </style>
@@ -267,17 +230,17 @@
 </head>
 <body>
     <div class="background">
-        <!-- Hojas que caen -->
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <div class="leaf"></div>
-        <!-- Luciérnagas -->
-        <div class="firefly"></div>
-        <div class="firefly"></div>
-        <div class="firefly"></div>
-        <div class="firefly"></div>
+        <!-- Estrellas que titilan -->
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <!-- Planetas que giran -->
+        <div class="planet"></div>
+        <div class="planet"></div>
+        <div class="planet"></div>
     </div>
 
     <div class="content">
@@ -294,11 +257,11 @@
                 <i class="fas fa-school"></i>
                 Plataforma
             </a>
-            <a href="https://elprofe365.github.io/acta/" class="button" target="_blank">
+            <a href="index (1).html" class="button" target="_blank">
                 <i class="fas fa-file-alt"></i>
                 Crear Acta
             </a>
-            <a href="https://elprofe365.github.io/informe/" class="button" target="_blank">
+            <a href="Infome.html" class="button" target="_blank">
                 <i class="fas fa-chart-bar"></i>
                 Crear Informe
             </a>
