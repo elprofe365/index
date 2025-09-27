@@ -5,204 +5,269 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Elprofe365</title>
     <style>
-        /* Paleta de Colores:
-           - Fondo Bosque Nocturno: #0A192F (Oscuro)
-           - Caja de Enlaces: #F0FFF0 (Blanco Ligeramente Verdoso/Rocío)
-           - Colores Base Botones: Verde, Amarillo, Azul, Rojo del escudo
-        */
+        /* Paleta de colores basada en el escudo: amarillo vibrante, verde amigable, blanco y azul */
+        :root {
+            --yellow: #FFD700; /* Amarillo del borde y texto */
+            --green: #228B22; /* Verde del centro */
+            --white: #FFFFFF; /* Blanco para antorcha y textos */
+            --light-blue: #87CEEB; /* Azul cielo para fondo dinámico */
+            --accent-green: #90EE90; /* Verde claro para acentos */
+        }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
-            color: white;
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fuente divertida para niños */
+            background: linear-gradient(to bottom, var(--light-blue), var(--accent-green)); /* Fondo degradado */
+            overflow-x: hidden; /* Evitar desplazamiento horizontal */
+            color: var(--white);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+        }
+
+        /* Fondo dinámico con nubes y burbujas */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
             overflow: hidden;
-            background-color: #0A192F; /* Fondo Oscuro de Bosque */
         }
 
-        /* --- Animaciones de Fondo Dinámico (Luciérnagas y Hojas) --- */
-
-        @keyframes brillar {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-        @keyframes flotar {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(10px, 15px); }
-        }
-        .firefly {
-            position: fixed;
-            width: 5px; height: 5px;
-            background-color: #FFD700;
-            border-radius: 50%;
-            box-shadow: 0 0 5px 3px rgba(255, 215, 0, 0.5);
-            animation: brillar 3s ease-in-out infinite alternate, flotar 10s ease-in-out infinite alternate;
-            z-index: 0;
-        }
-        .firefly:nth-child(1) { top: 10%; left: 20%; animation-delay: 1s; }
-        .firefly:nth-child(2) { top: 80%; left: 90%; animation-delay: 3s; }
-        .firefly:nth-child(3) { top: 50%; left: 5%; animation-delay: 5s; }
-        .firefly:nth-child(4) { top: 30%; left: 70%; animation-delay: 2s; }
-        .firefly:nth-child(5) { top: 65%; left: 45%; animation-delay: 4s; }
-        .firefly:nth-child(6) { top: 25%; left: 40%; animation-delay: 0s; }
-        .firefly:nth-child(7) { top: 90%; left: 50%; animation-delay: 6s; }
-        .firefly:nth-child(8) { top: 40%; left: 95%; animation-delay: 1s; }
-
-        @keyframes caer {
-            0% { transform: translate(0, -10vh) rotate(0deg); opacity: 1; }
-            100% { transform: translate(10vw, 100vh) rotate(360deg); opacity: 0.5; }
-        }
-        .leaf {
-            position: fixed;
-            width: 15px; height: 15px;
-            background-color: #1F6030;
+        .cloud {
+            position: absolute;
+            background: var(--white);
             border-radius: 50%;
             opacity: 0.8;
-            animation: caer 15s linear infinite;
-            z-index: 0;
+            animation: moveClouds linear infinite;
         }
-        .leaf:nth-child(9) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; background-color: #DC143C; }
-        .leaf:nth-child(10) { left: 30%; animation-delay: 5s; }
-        .leaf:nth-child(11) { left: 50%; animation-delay: 8s; background-color: #4682B4; }
-        .leaf:nth-child(12) { left: 70%; animation-delay: 11s; }
-        .leaf:nth-child(13) { left: 90%; width: 10px; height: 10px; animation-delay: 14s; }
 
+        .cloud:nth-child(1) {
+            width: 150px;
+            height: 75px;
+            top: 10%;
+            left: -150px;
+            animation-duration: 50s;
+        }
 
-        /* --- Contenido Principal y Navegación --- */
+        .cloud:nth-child(2) {
+            width: 100px;
+            height: 50px;
+            top: 30%;
+            left: -100px;
+            animation-duration: 60s;
+            animation-delay: 10s;
+        }
 
-        .main-container {
-            position: relative;
-            z-index: 10;
+        .cloud:nth-child(3) {
+            width: 200px;
+            height: 100px;
+            top: 50%;
+            left: -200px;
+            animation-duration: 70s;
+            animation-delay: 20s;
+        }
+
+        @keyframes moveClouds {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: floatBubbles 10s ease-in-out infinite;
+        }
+
+        .bubble:nth-child(1) {
+            width: 40px;
+            height: 40px;
+            background: var(--yellow);
+            bottom: -40px;
+            left: 20%;
+            animation-duration: 8s;
+        }
+
+        .bubble:nth-child(2) {
+            width: 50px;
+            height: 50px;
+            background: var(--green);
+            bottom: -50px;
+            left: 40%;
+            animation-duration: 12s;
+            animation-delay: 2s;
+        }
+
+        .bubble:nth-child(3) {
+            width: 30px;
+            height: 30px;
+            background: var(--accent-green);
+            bottom: -30px;
+            left: 60%;
+            animation-duration: 10s;
+            animation-delay: 4s;
+        }
+
+        .bubble:nth-child(4) {
+            width: 45px;
+            height: 45px;
+            background: var(--yellow);
+            bottom: -45px;
+            left: 80%;
+            animation-duration: 9s;
+            animation-delay: 6s;
+        }
+
+        @keyframes floatBubbles {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-100vh) scale(1.2); }
+            100% { transform: translateY(-200vh) scale(1); }
+        }
+
+        /* Cabecera con logo */
+        header {
             text-align: center;
-            padding: 40px;
-            background-color: #F0FFF0; /* Blanco Verdoso */
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            max-width: 90%;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
         }
 
-        .logo {
+        header img {
             width: 120px;
             height: auto;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+            border: 5px solid var(--yellow);
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
         }
 
-        .button-row {
+        header img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Contenedor de botones en una sola fila */
+        .buttons {
             display: flex;
+            flex-direction: row;
             justify-content: center;
             gap: 20px;
-            padding: 0 10px;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+            flex-wrap: wrap; /* Permite ajuste en pantallas pequeñas */
         }
 
-        /* --- ESTILOS DE BOTONES MÁS INFANTILES Y BONITOS --- */
-        .nav-button {
+        /* Botones grandes, responsivos y kawaii */
+        .button {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px 15px;
-            min-width: 130px;
-            flex-grow: 1;
-            border-radius: 50px;
+            width: 200px;
+            height: 200px;
+            background: var(--green);
+            border: 5px solid var(--yellow);
+            border-radius: 20px;
             text-decoration: none;
-            color: white;
+            color: var(--white);
+            font-size: 20px;
             font-weight: bold;
-            font-size: 1.1em;
-            transition: all 0.2s ease;
-            border: none;
-            position: relative;
-            cursor: pointer;
-            box-shadow: 0 8px 0 0 rgba(0, 0, 0, 0.3);
-            white-space: nowrap;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
-        /* Colores Base */
-        #btn-drive { background-color: #1F6030; }
-        #btn-plataforma { background-color: #FFD700; color: #0A192F; } /* Texto oscuro en amarillo */
-        #btn-acta { background-color: #4682B4; }
-        #btn-informe { background-color: #DC143C; }
-
-        /* Efectos Hover */
-        .nav-button:hover {
-            transform: translateY(3px);
-            box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.3);
-            filter: brightness(1.1);
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
         }
 
-        #btn-drive:hover { background-color: #388e3c; }
-        #btn-plataforma:hover { background-color: #ffeb3b; }
-        #btn-acta:hover { background-color: #64b5f6; }
-        #btn-informe:hover { background-color: #ef5350; }
-
-        /* --- ESTILOS MEJORADOS PARA ICONOS (SVG O EMOJIS) --- */
-        .icon-wrapper { /* Contenedor para el icono, si se usa SVG se le puede dar estilo aquí */
-            width: 40px; /* Ancho fijo para el icono */
-            height: 40px; /* Alto fijo */
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .button i {
+            font-size: 50px;
+            margin-bottom: 10px;
         }
 
-        .icon-wrapper svg { /* Estilo para SVGs */
-            fill: currentColor; /* Hará que el SVG tome el color del texto del botón */
-            width: 100%;
-            height: 100%;
+        /* Responsividad para móviles */
+        @media (max-width: 900px) {
+            .button {
+                width: 150px;
+                height: 150px;
+                font-size: 16px;
+            }
+
+            .button i {
+                font-size: 40px;
+            }
+
+            header img {
+                width: 100px;
+            }
         }
-        
-        /* Alternativa si usas emojis y quieres personalizarlos más */
-        .icon {
-            font-size: 2.5em; /* Iconos más grandes y llamativos */
-            line-height: 1; /* Para que no agregue espacio extra vertical */
-            color: white; /* Color por defecto, los botones amarillos lo sobrescribirán */
-        }
-        #btn-plataforma .icon {
-            color: #0A192F; /* Icono oscuro para el botón amarillo */
+
+        @media (max-width: 600px) {
+            .button {
+                width: 120px;
+                height: 120px;
+                font-size: 14px;
+            }
+
+            .button i {
+                font-size: 30px;
+            }
+
+            .cloud {
+                width: 80px !important;
+                height: 40px !important;
+            }
+
+            .bubble {
+                width: 25px !important;
+                height: 25px !important;
+            }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
-    <div class="firefly"></div><div class="firefly"></div><div class="firefly"></div><div class="firefly"></div>
-    <div class="firefly"></div><div class="firefly"></div><div class="firefly"></div><div class="firefly"></div>
-    <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
-
-    <div class="main-container">
-        <img src="https://ienacionalagustincodazzi.edu.co/wp-content/uploads/2021/08/escudo_2-183x193.png" alt="Escudo I.E. Agustín Codazzi" class="logo">
-
-        <div class="button-row">
-            <a href="#" id="btn-drive" class="nav-button">
-                <div class="icon-wrapper">
-                    <span class="icon">📂</span>
-                    </div>
-                Drive
-            </a>
-            <a href="#" id="btn-plataforma" class="nav-button">
-                <div class="icon-wrapper">
-                    <span class="icon">💻</span>
-                    </div>
-                Plataforma
-            </a>
-            <a href="#" id="btn-acta" class="nav-button">
-                <div class="icon-wrapper">
-                    <span class="icon">📝</span>
-                    </div>
-                Crear Acta
-            </a>
-            <a href="#" id="btn-informe" class="nav-button">
-                <div class="icon-wrapper">
-                    <span class="icon">📊</span>
-                    </div>
-                Crear Informe
-            </a>
-        </div>
+    <div class="background">
+        <!-- Nubes -->
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <!-- Burbujas -->
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
     </div>
 
+    <header>
+        <img src="https://ienacionalagustincodazzi.edu.co/wp-content/uploads/2021/08/escudo_2-183x193.png" alt="Escudo Escolar">
+    </header>
+
+    <div class="buttons">
+        <a href="https://drive.google.com/drive/folders/1El9hQ7dLKel4AGh_ewW4v09WkBdd3qBk" class="button" target="_blank">
+            <i class="fas fa-cloud"></i>
+            Drive
+        </a>
+        <a href="https://www.edusac1.co/ieagustincodazzisantarita/entrar.php" class="button" target="_blank">
+            <i class="fas fa-school"></i>
+            Plataforma
+        </a>
+        <a href="https://elprofe365.github.io/acta/" class="button" target="_blank">
+            <i class="fas fa-file-alt"></i>
+            Crear Acta
+        </a>
+        <a href="https://elprofe365.github.io/informe/" class="button" target="_blank">
+            <i class="fas fa-chart-bar"></i>
+            Crear Informe
+        </a>
+    </div>
 </body>
 </html>
