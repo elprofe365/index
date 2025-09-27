@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Elprofe365</title>
     <style>
-        /* Paleta de colores basada en el escudo: amarillo vibrante, verde amigable, blanco y azul */
+        /* Paleta de colores inspirada en un bosque encantado y el escudo */
         :root {
-            --yellow: #FFD700; /* Amarillo del borde y texto */
-            --green: #228B22; /* Verde del centro */
-            --white: #FFFFFF; /* Blanco para antorcha y textos */
-            --light-blue: #87CEEB; /* Azul cielo para fondo dinámico */
-            --accent-green: #90EE90; /* Verde claro para acentos */
+            --forest-green: #1B4D3E; /* Verde oscuro para el fondo y botones */
+            --leaf-green: #4CAF50; /* Verde claro para hojas */
+            --golden-yellow: #FFD700; /* Amarillo dorado para luciérnagas y bordes */
+            --white: #FFFFFF; /* Blanco para textos */
+            --brown: #5C4033; /* Marrón para acentos */
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Comic Sans MS', cursive, sans-serif; /* Fuente divertida para niños */
-            background: linear-gradient(to bottom, var(--light-blue), var(--accent-green)); /* Fondo degradado */
+            background: linear-gradient(to bottom, var(--forest-green), var(--leaf-green)); /* Fondo degradado de bosque */
             overflow-x: hidden; /* Evitar desplazamiento horizontal */
             color: var(--white);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
@@ -29,7 +29,7 @@
             justify-content: center; /* Centra todo verticalmente */
         }
 
-        /* Fondo dinámico con nubes y burbujas */
+        /* Fondo dinámico con hojas que caen y luciérnagas */
         .background {
             position: fixed;
             top: 0;
@@ -40,95 +40,105 @@
             overflow: hidden;
         }
 
-        .cloud {
+        .leaf {
             position: absolute;
-            background: var(--white);
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: moveClouds linear infinite;
+            width: 20px;
+            height: 20px;
+            background: var(--leaf-green);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* Forma de hoja */
+            opacity: 0.7;
+            animation: fallLeaves 10s linear infinite;
         }
 
-        .cloud:nth-child(1) {
-            width: 150px;
-            height: 75px;
-            top: 10%;
-            left: -150px;
-            animation-duration: 50s;
-        }
-
-        .cloud:nth-child(2) {
-            width: 100px;
-            height: 50px;
-            top: 30%;
-            left: -100px;
-            animation-duration: 60s;
-            animation-delay: 10s;
-        }
-
-        .cloud:nth-child(3) {
-            width: 200px;
-            height: 100px;
-            top: 50%;
-            left: -200px;
-            animation-duration: 70s;
-            animation-delay: 20s;
-        }
-
-        @keyframes moveClouds {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(100vw + 200px)); }
-        }
-
-        .bubble {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: floatBubbles 10s ease-in-out infinite;
-        }
-
-        .bubble:nth-child(1) {
-            width: 40px;
-            height: 40px;
-            background: var(--yellow);
-            bottom: -40px;
-            left: 20%;
-            animation-duration: 8s;
-        }
-
-        .bubble:nth-child(2) {
-            width: 50px;
-            height: 50px;
-            background: var(--green);
-            bottom: -50px;
-            left: 40%;
+        .leaf:nth-child(1) {
+            left: 10%;
             animation-duration: 12s;
+            animation-delay: 0s;
+        }
+
+        .leaf:nth-child(2) {
+            left: 30%;
+            animation-duration: 15s;
             animation-delay: 2s;
         }
 
-        .bubble:nth-child(3) {
-            width: 30px;
-            height: 30px;
-            background: var(--accent-green);
-            bottom: -30px;
-            left: 60%;
-            animation-duration: 10s;
+        .leaf:nth-child(3) {
+            left: 50%;
+            animation-duration: 13s;
             animation-delay: 4s;
         }
 
-        .bubble:nth-child(4) {
-            width: 45px;
-            height: 45px;
-            background: var(--yellow);
-            bottom: -45px;
-            left: 80%;
-            animation-duration: 9s;
+        .leaf:nth-child(4) {
+            left: 70%;
+            animation-duration: 11s;
             animation-delay: 6s;
         }
 
-        @keyframes floatBubbles {
-            0% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-100vh) scale(1.2); }
-            100% { transform: translateY(-200vh) scale(1); }
+        .leaf:nth-child(5) {
+            left: 90%;
+            animation-duration: 14s;
+            animation-delay: 8s;
+        }
+
+        @keyframes fallLeaves {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        .firefly {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--golden-yellow);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--golden-yellow), 0 0 20px var(--golden-yellow);
+            animation: glowFirefly 3s ease-in-out infinite, moveFirefly 10s linear infinite;
+        }
+
+        .firefly:nth-child(1) {
+            left: 20%;
+            top: 20%;
+            animation-duration: 8s;
+        }
+
+        .firefly:nth-child(2) {
+            left: 40%;
+            top: 40%;
+            animation-duration: 9s;
+            animation-delay: 2s;
+        }
+
+        .firefly:nth-child(3) {
+            left: 60%;
+            top: 60%;
+            animation-duration: 7s;
+            animation-delay: 4s;
+        }
+
+        .firefly:nth-child(4) {
+            left: 80%;
+            top: 80%;
+            animation-duration: 10s;
+            animation-delay: 6s;
+        }
+
+        @keyframes glowFirefly {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes moveFirefly {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50px, -50px); }
+            50% { transform: translate(-50px, 50px); }
+            75% { transform: translate(50px, 50px); }
+            100% { transform: translate(0, 0); }
         }
 
         /* Contenedor principal para centrar todo */
@@ -152,7 +162,7 @@
         header img {
             width: 120px;
             height: auto;
-            border: 5px solid var(--yellow);
+            border: 5px solid var(--golden-yellow);
             border-radius: 50%;
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
@@ -181,8 +191,8 @@
             justify-content: center;
             width: 200px;
             height: 200px;
-            background: var(--green);
-            border: 5px solid var(--yellow);
+            background: var(--forest-green);
+            border: 5px solid var(--golden-yellow);
             border-radius: 20px;
             text-decoration: none;
             color: var(--white);
@@ -201,6 +211,7 @@
         .button i {
             font-size: 50px;
             margin-bottom: 10px;
+            color: var(--golden-yellow); /* Íconos en dorado para combinar con el tema */
         }
 
         /* Responsividad para móviles */
@@ -218,6 +229,16 @@
             header img {
                 width: 100px;
             }
+
+            .leaf {
+                width: 15px !important;
+                height: 15px !important;
+            }
+
+            .firefly {
+                width: 6px !important;
+                height: 6px !important;
+            }
         }
 
         @media (max-width: 600px) {
@@ -231,14 +252,14 @@
                 font-size: 30px;
             }
 
-            .cloud {
-                width: 80px !important;
-                height: 40px !important;
+            .leaf {
+                width: 12px !important;
+                height: 12px !important;
             }
 
-            .bubble {
-                width: 25px !important;
-                height: 25px !important;
+            .firefly {
+                width: 5px !important;
+                height: 5px !important;
             }
         }
     </style>
@@ -246,15 +267,17 @@
 </head>
 <body>
     <div class="background">
-        <!-- Nubes -->
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-        <!-- Burbujas -->
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
+        <!-- Hojas que caen -->
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <!-- Luciérnagas -->
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
     </div>
 
     <div class="content">
