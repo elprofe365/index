@@ -26,6 +26,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center; /* Centra todo verticalmente */
         }
 
         /* Fondo dinámico con nubes y burbujas */
@@ -130,12 +131,22 @@
             100% { transform: translateY(-200vh) scale(1); }
         }
 
+        /* Contenedor principal para centrar todo */
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
         /* Cabecera con logo */
         header {
             text-align: center;
-            padding: 20px;
-            width: 100%;
-            max-width: 1200px;
+            margin-bottom: 20px;
         }
 
         header img {
@@ -157,9 +168,7 @@
             flex-direction: row;
             justify-content: center;
             gap: 20px;
-            padding: 20px;
             width: 100%;
-            max-width: 1200px;
             flex-wrap: wrap; /* Permite ajuste en pantallas pequeñas */
         }
 
@@ -247,27 +256,29 @@
         <div class="bubble"></div>
     </div>
 
-    <header>
-        <img src="https://ienacionalagustincodazzi.edu.co/wp-content/uploads/2021/08/escudo_2-183x193.png" alt="Escudo Escolar">
-    </header>
+    <div class="content">
+        <header>
+            <img src="https://ienacionalagustincodazzi.edu.co/wp-content/uploads/2021/08/escudo_2-183x193.png" alt="Escudo Escolar">
+        </header>
 
-    <div class="buttons">
-        <a href="https://drive.google.com/drive/folders/1El9hQ7dLKel4AGh_ewW4v09WkBdd3qBk" class="button" target="_blank">
-            <i class="fas fa-cloud"></i>
-            Drive
-        </a>
-        <a href="https://www.edusac1.co/ieagustincodazzisantarita/entrar.php" class="button" target="_blank">
-            <i class="fas fa-school"></i>
-            Plataforma
-        </a>
-        <a href="https://elprofe365.github.io/acta/" class="button" target="_blank">
-            <i class="fas fa-file-alt"></i>
-            Crear Acta
-        </a>
-        <a href="https://elprofe365.github.io/informe/" class="button" target="_blank">
-            <i class="fas fa-chart-bar"></i>
-            Crear Informe
-        </a>
+        <div class="buttons">
+            <a href="https://drive.google.com/drive/folders/1El9hQ7dLKel4AGh_ewW4v09WkBdd3qBk" class="button" target="_blank">
+                <i class="fas fa-cloud"></i>
+                Drive
+            </a>
+            <a href="https://www.edusac1.co/ieagustincodazzisantarita/entrar.php" class="button" target="_blank">
+                <i class="fas fa-school"></i>
+                Plataforma
+            </a>
+            <a href="https://elprofe365.github.io/acta/" class="button" target="_blank">
+                <i class="fas fa-file-alt"></i>
+                Crear Acta
+            </a>
+            <a href="https://elprofe365.github.io/informe/" class="button" target="_blank">
+                <i class="fas fa-chart-bar"></i>
+                Crear Informe
+            </a>
+        </div>
     </div>
 </body>
 </html>
