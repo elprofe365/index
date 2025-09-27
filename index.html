@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Mágico Escolar - I.E. Agustín Codazzi</title>
     <style>
-        /* Paleta de Colores basada en el escudo:
-           - Verde Oscuro/Bosque: #1F6030
-           - Amarillo/Sol: #FFD700
-           - Azul Claro/Cielo: #4682B4
-           - Rojo/Contraste: #DC143C
-           - Fondo Noche/Bosque: #0A192F
+        /* Paleta de Colores:
+           - Fondo Bosque Nocturno: #0A192F (Oscuro)
+           - Caja de Enlaces: #F0FFF0 (Blanco Ligeramente Verdoso/Rocío)
+           - Colores Base Botones: Verde, Amarillo, Azul, Rojo del escudo
         */
 
         body {
@@ -23,35 +21,29 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Oculta barras de desplazamiento causadas por animaciones */
-            background-color: #0A192F; /* Fondo Bosque Noche */
+            overflow: hidden;
+            background-color: #0A192F; /* Fondo Oscuro de Bosque */
         }
 
-        /* --- Estilos del Fondo Dinámico: Bosque Encantado --- */
+        /* --- Animaciones de Fondo Dinámico (Luciérnagas y Hojas) --- */
 
-        /* Animación de las Luciérnagas (puntos de luz) */
         @keyframes brillar {
-            0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
-            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; transform: scale(1.2); }
         }
         @keyframes flotar {
             0%, 100% { transform: translate(0, 0); }
             50% { transform: translate(10px, 15px); }
         }
-
         .firefly {
             position: fixed;
-            width: 5px;
-            height: 5px;
-            background-color: #FFD700; /* Amarillo brillante */
+            width: 5px; height: 5px;
+            background-color: #FFD700;
             border-radius: 50%;
             box-shadow: 0 0 5px 3px rgba(255, 215, 0, 0.5);
-            animation: brillar 3s ease-in-out infinite alternate,
-                       flotar 10s ease-in-out infinite alternate;
+            animation: brillar 3s ease-in-out infinite alternate, flotar 10s ease-in-out infinite alternate;
             z-index: 0;
         }
-
-        /* Generar posiciones aleatorias para las luciérnagas */
         .firefly:nth-child(1) { top: 10%; left: 20%; animation-delay: 1s; }
         .firefly:nth-child(2) { top: 80%; left: 90%; animation-delay: 3s; }
         .firefly:nth-child(3) { top: 50%; left: 5%; animation-delay: 5s; }
@@ -61,126 +53,152 @@
         .firefly:nth-child(7) { top: 90%; left: 50%; animation-delay: 6s; }
         .firefly:nth-child(8) { top: 40%; left: 95%; animation-delay: 1s; }
 
-
-        /* Animación de las Hojas que Caen */
         @keyframes caer {
             0% { transform: translate(0, -10vh) rotate(0deg); opacity: 1; }
             100% { transform: translate(10vw, 100vh) rotate(360deg); opacity: 0.5; }
         }
-
         .leaf {
             position: fixed;
-            width: 15px;
-            height: 15px;
-            background-color: #1F6030; /* Hoja verde oscura */
+            width: 15px; height: 15px;
+            background-color: #1F6030;
             border-radius: 50%;
-            opacity: 0;
+            opacity: 0.8;
             animation: caer 15s linear infinite;
             z-index: 0;
         }
-
-        .leaf:nth-child(9) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; background-color: #DC143C; /* Rojo */ }
+        .leaf:nth-child(9) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; background-color: #DC143C; }
         .leaf:nth-child(10) { left: 30%; animation-delay: 5s; }
-        .leaf:nth-child(11) { left: 50%; animation-delay: 8s; background-color: #FFD700; /* Amarillo */ }
+        .leaf:nth-child(11) { left: 50%; animation-delay: 8s; background-color: #4682B4; }
         .leaf:nth-child(12) { left: 70%; animation-delay: 11s; }
         .leaf:nth-child(13) { left: 90%; width: 10px; height: 10px; animation-delay: 14s; }
 
-        /* --- Estilos del Contenido Principal --- */
+
+        /* --- Contenido Principal y Navegación --- */
 
         .main-container {
             position: relative;
-            z-index: 10; /* Asegura que el contenido esté sobre el fondo */
+            z-index: 10;
             text-align: center;
-            padding: 20px;
-            /* Opcional: un fondo semitransparente para los botones para que se vean mejor */
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 20px;
+            padding: 40px;
+            background-color: #F0FFF0; /* Blanco Verdoso */
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            max-width: 90%;
         }
 
         .logo {
-            width: 180px; /* Tamaño grande y prominente */
+            width: 120px;
             height: auto;
             margin-bottom: 30px;
-            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)); /* Sombra para resaltar */
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
         }
 
-        .button-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Dos columnas */
-            gap: 20px; /* Espacio entre botones */
-            max-width: 600px;
-            margin: 0 auto;
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 10px;
         }
 
+        /* --- ESTILOS DE BOTONES MÁS INFANTILES Y BONITOS --- */
         .nav-button {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px 10px;
-            border-radius: 15px;
+            padding: 20px 15px;
+            min-width: 130px;
+            flex-grow: 1;
+            border-radius: 50px;
             text-decoration: none;
-            color: #0A192F; /* Color de texto oscuro */
+            color: white;
             font-weight: bold;
             font-size: 1.1em;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 5px 0 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
             border: none;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 8px 0 0 rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
         }
 
+        /* Colores Base */
+        #btn-drive { background-color: #1F6030; }
+        #btn-plataforma { background-color: #FFD700; color: #0A192F; } /* Texto oscuro en amarillo */
+        #btn-acta { background-color: #4682B4; }
+        #btn-informe { background-color: #DC143C; }
+
+        /* Efectos Hover */
         .nav-button:hover {
-            transform: translateY(2px);
+            transform: translateY(3px);
             box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.3);
+            filter: brightness(1.1);
         }
 
-        /* Asignación de colores a cada botón */
-        #btn-drive { background-color: #1F6030; color: white; } /* Verde Oscuro */
-        #btn-plataforma { background-color: #FFD700; } /* Amarillo */
-        #btn-acta { background-color: #4682B4; color: white; } /* Azul */
-        #btn-informe { background-color: #DC143C; color: white; } /* Rojo */
+        #btn-drive:hover { background-color: #388e3c; }
+        #btn-plataforma:hover { background-color: #ffeb3b; }
+        #btn-acta:hover { background-color: #64b5f6; }
+        #btn-informe:hover { background-color: #ef5350; }
 
-        /* Iconos (usando emojis para simplicidad, en un proyecto real se usarían iconos SVG/Font Awesome) */
+        /* --- ESTILOS MEJORADOS PARA ICONOS (SVG O EMOJIS) --- */
+        .icon-wrapper { /* Contenedor para el icono, si se usa SVG se le puede dar estilo aquí */
+            width: 40px; /* Ancho fijo para el icono */
+            height: 40px; /* Alto fijo */
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-wrapper svg { /* Estilo para SVGs */
+            fill: currentColor; /* Hará que el SVG tome el color del texto del botón */
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Alternativa si usas emojis y quieres personalizarlos más */
         .icon {
-            font-size: 2em;
-            margin-bottom: 5px;
+            font-size: 2.5em; /* Iconos más grandes y llamativos */
+            line-height: 1; /* Para que no agregue espacio extra vertical */
+            color: white; /* Color por defecto, los botones amarillos lo sobrescribirán */
+        }
+        #btn-plataforma .icon {
+            color: #0A192F; /* Icono oscuro para el botón amarillo */
         }
     </style>
 </head>
 <body>
 
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-    <div class="firefly"></div>
-
-    <div class="leaf"></div>
-    <div class="leaf"></div>
-    <div class="leaf"></div>
-    <div class="leaf"></div>
-    <div class="leaf"></div>
+    <div class="firefly"></div><div class="firefly"></div><div class="firefly"></div><div class="firefly"></div>
+    <div class="firefly"></div><div class="firefly"></div><div class="firefly"></div><div class="firefly"></div>
+    <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
 
     <div class="main-container">
         <img src="https://ienacionalagustincodazzi.edu.co/wp-content/uploads/2021/08/escudo_2-183x193.png" alt="Escudo I.E. Agustín Codazzi" class="logo">
 
-        <div class="button-grid">
+        <div class="button-row">
             <a href="#" id="btn-drive" class="nav-button">
-                <span class="icon">📂</span>
+                <div class="icon-wrapper">
+                    <span class="icon">📂</span>
+                    </div>
                 Drive
             </a>
             <a href="#" id="btn-plataforma" class="nav-button">
-                <span class="icon">💻</span>
+                <div class="icon-wrapper">
+                    <span class="icon">💻</span>
+                    </div>
                 Plataforma
             </a>
             <a href="#" id="btn-acta" class="nav-button">
-                <span class="icon">📝</span>
+                <div class="icon-wrapper">
+                    <span class="icon">📝</span>
+                    </div>
                 Crear Acta
             </a>
             <a href="#" id="btn-informe" class="nav-button">
-                <span class="icon">📊</span>
+                <div class="icon-wrapper">
+                    <span class="icon">📊</span>
+                    </div>
                 Crear Informe
             </a>
         </div>
