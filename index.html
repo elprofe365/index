@@ -3,192 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal del Docente</title>
+    <title>Elprofe356</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
-            color: #fff;
-            overflow: hidden;
-            width: 100vw;
-            height: 100vh;
+            font-family: 'Bungee', 'Comic Sans MS', Arial, sans-serif;
+            background: linear-gradient(135deg, #003087 0%, #E6F3FA 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            position: relative;
         }
-
-        /* Fondo dinámico con gradiente oscuro */
-        .background {
-            position: fixed;
+        .container {
+            text-align: center;
+            background-color: #FFFFFF;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4), inset 0 0 10px #FFD700;
+            max-width: 90%;
+            width: 600px;
+            border: 6px solid #003087;
+            position: relative;
+            z-index: 1;
+            margin: 1rem;
+        }
+        .logo {
+            width: 100px;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(2px 2px 4px #FFD700);
+            animation: bounce 1.8s infinite;
+        }
+        h1 {
+            color: #FFD700;
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px #003087, -2px -2px #0059C1;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-family: 'Bungee', sans-serif;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .button {
+            display: block;
+            padding: 1rem;
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            color: #FFFFFF;
+            background: linear-gradient(45deg, #003087, #0059C1);
+            border: 4px solid #FFD700;
+            border-radius: 12px;
+            text-decoration: none;
+            width: 100%;
+            max-width: 250px;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+            text-transform: uppercase;
+            font-family: 'Bungee', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        .button:hover {
+            background: linear-gradient(45deg, #0059C1, #007BFF);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #FFD700;
+        }
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.4s;
+        }
+        .button:hover::before {
+            left: 100%;
+        }
+        .graffiti-bg {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #0f172a, #1e3a8a, #3b0764, #0f172a);
-            background-size: 400% 400%;
-            animation: gradientAnimation 12s ease infinite;
-            z-index: -1;
+            z-index: 0;
+            overflow: hidden;
         }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Partículas animadas */
-        .particle {
+        .spray {
             position: absolute;
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.3);
+            width: clamp(30px, 5vw, 50px);
+            height: clamp(30px, 5vw, 50px);
+            background: radial-gradient(circle, #FFD700 20%, transparent 70%);
             border-radius: 50%;
-            animation: floatParticle 20s linear infinite;
+            animation: spray 4s infinite ease-in-out;
+            opacity: 0.5;
         }
-
-        @keyframes floatParticle {
-            0% { transform: translateY(100vh) scale(0.5); opacity: 0.3; }
-            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
-        }
-
-        .particle:nth-child(1) { left: 10%; animation-duration: 18s; }
-        .particle:nth-child(2) { left: 30%; animation-duration: 22s; }
-        .particle:nth-child(3) { left: 50%; animation-duration: 15s; }
-        .particle:nth-child(4) { left: 70%; animation-duration: 25s; }
-        .particle:nth-child(5) { left: 90%; animation-duration: 20s; }
-
-        /* Contenedor principal */
-        .container {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100vh;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Lema estratégico en la parte superior */
-        .slogan {
+        .drip {
             position: absolute;
-            top: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            animation: glow 2s ease-in-out infinite;
+            width: clamp(8px, 1vw, 10px);
+            height: clamp(20px, 3vw, 30px);
+            background: #003087;
+            border-radius: 10px;
+            animation: drip 3s infinite;
+            opacity: 0.7;
         }
-
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5); }
-            50% { text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.7); }
+        @keyframes spray {
+            0% { transform: scale(0.8) translateY(100vh); }
+            50% { transform: scale(1.2) translateY(50vh); }
+            100% { transform: scale(0.8) translateY(-100vh); }
         }
-
-        /* Imagen de libro con aura de conocimiento */
-        .knowledge-icon {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: clamp(50px, 10vw, 80px);
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.5);
-            animation: pulse 3s ease-in-out infinite;
+        @keyframes drip {
+            0% { transform: translateY(-100vh); opacity: 0; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(100vh); opacity: 0; }
         }
-
-        @keyframes pulse {
-            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-            50% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
-
-        /* Enlaces distribuidos uniformemente */
-        .links {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: clamp(10px, 3vw, 20px);
-            max-width: 600px;
-            width: 100%;
-            padding: 0 20px;
-        }
-
-        .link-button {
-            background-color: rgba(255, 255, 255, 0.15);
-            border: 2px solid #ccc;
-            border-radius: 50px;
-            padding: clamp(10px, 2vw, 15px) clamp(20px, 4vw, 30px);
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            text-decoration: none;
-            color: #fff;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            text-align: center;
-        }
-
-        .link-button:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-        }
-
-        /* Ajustes responsivos */
         @media (max-width: 600px) {
-            .links {
-                grid-template-columns: 1fr;
-                gap: 15px;
+            .container {
+                padding: 1.5rem;
+                border-width: 4px;
             }
-            .link-button {
-                font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-                padding: 12px 20px;
+            .logo {
+                width: 80px;
             }
-            .slogan {
-                font-size: clamp(1.2rem, 4vw, 1.8rem);
-                top: 10px;
-            }
-            .knowledge-icon {
-                font-size: clamp(40px, 8vw, 60px);
-                bottom: 10px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .links {
-                padding: 0 10px;
-            }
-            .link-button {
-                padding: 10px 15px;
+            .button {
+                max-width: 200px;
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Fondo dinámico -->
-    <div class="background"></div>
-    <!-- Partículas animadas -->
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-
-    <!-- Contenedor principal -->
+    <div class="graffiti-bg"></div>
     <div class="container">
-        <!-- Lema -->
-        <div class="slogan">El Profe 365</div>
-
-        <!-- Enlaces -->
-        <div class="links">
-            <a href="https://drive.google.com" class="link-button" target="_blank">Drive</a>
-            <a href="https://plataforma.ejemplo.com" class="link-button" target="_blank">Acceso a Plataforma</a>
-            <a href="https://acta.ejemplo.com" class="link-button" target="_blank">Elaborar Acta</a>
-            <a href="https://informe.ejemplo.com" class="link-button" target="_blank">Elaborar Informe</a>
+        <img src="https://ienacionalagustincodazzi.edu.co/wp-content/uploads/2021/08/escudo_2-183x193.png" alt="Logo IENAC" class="logo">
+        <h1>Elprofe356</h1>
+        <div class="button-container">
+            <a href="https://drive.google.com/drive/folders/1El9hQ7dLKel4AGh_ewW4v09WkBdd3qBk" class="button" target="_blank">Drive</a>
+            <a href="https://www.edusac1.co/ieagustincodazzisantarita/entrar.php" class="button" target="_blank">Plataforma</a>
+            <a href="https://elprofe365.github.io/acta/" class="button" target="_blank">Crear Acta</a>
+            <a href="https://elprofe365.github.io/informe/" class="button" target="_blank">Crear Informe</a>
         </div>
-
-        <!-- Icono de libro con aura -->
-        <div class="knowledge-icon">📖</div>
     </div>
+    <script>
+        // Generar elementos de grafiti (aerosol y goteo)
+        const graffitiBg = document.querySelector('.graffiti-bg');
+        for (let i = 0; i < 20; i++) {
+            const spray = document.createElement('div');
+            spray.classList.add('spray');
+            spray.style.left = `${Math.random() * 100}%`;
+            spray.style.animationDelay = `${Math.random() * 4}s`;
+            graffitiBg.appendChild(spray);
+        }
+        for (let i = 0; i < 10; i++) {
+            const drip = document.createElement('div');
+            drip.classList.add('drip');
+            drip.style.left = `${Math.random() * 100}%`;
+            drip.style.animationDelay = `${Math.random() * 3}s`;
+            graffitiBg.appendChild(drip);
+        }
+    </script>
 </body>
 </html>
