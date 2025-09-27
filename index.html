@@ -101,7 +101,7 @@
             height: clamp(30px, 5vw, 50px);
             background: radial-gradient(circle, #FFD700 20%, transparent 70%);
             border-radius: 50%;
-            animation: spray 4s infinite ease-in-out;
+            animation: spray 8s infinite ease-in-out; /* Animación más lenta */
             opacity: 0.5;
         }
         .drip {
@@ -110,7 +110,7 @@
             height: clamp(20px, 3vw, 30px);
             background: #003087;
             border-radius: 10px;
-            animation: drip 3s infinite;
+            animation: drip 6s infinite; /* Animación más lenta */
             opacity: 0.7;
         }
         @keyframes spray {
@@ -161,14 +161,14 @@
             const spray = document.createElement('div');
             spray.classList.add('spray');
             spray.style.left = `${Math.random() * 100}%`;
-            spray.style.animationDelay = `${Math.random() * 4}s`;
+            spray.style.animationDelay = `${Math.random() * 8}s`;
             graffitiBg.appendChild(spray);
         }
         for (let i = 0; i < 10; i++) {
             const drip = document.createElement('div');
             drip.classList.add('drip');
             drip.style.left = `${Math.random() * 100}%`;
-            drip.style.animationDelay = `${Math.random() * 3}s`;
+            drip.style.animationDelay = `${Math.random() * 6}s`;
             graffitiBg.appendChild(drip);
         }
     </script>
